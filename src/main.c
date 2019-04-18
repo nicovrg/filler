@@ -6,12 +6,19 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/17 23:33:12 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/19 00:29:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "filler.h"
+
+int		ft_isdigit_space(int c)
+{
+	if ((c >= '0' && c <= '9') || c == ' ') 
+		return (1);
+	return (0);
+}
 
 int		init_struct(t_map *m)
 {
@@ -74,80 +81,27 @@ int		get_map_dimensions(t_map *m)
 	return (1);
 }
 
-int		allocate_map(t_map *m)
-{
-	int i;
-
-	i = 0;
-	if (!(m->map = (char **)malloc(sizeof(char *) * (m->map_height + 1))))
-			return (0);
-	while (i < m->map_height)
-	{
-		if (!(m->map[i] = (char *)malloc(sizeof(char) * (m->map_width + 1))))
-			return (0);
-		i++;
-	}
-	m->map[m->map_height] = 0;
-	return (0);
-}
-
-int		check_line(char **line, t_map *map)
+int		get_piece(t_map *m)
 {
 	int		i;
-	int		j;
-	char	*tmp;
-
-	i = 0;
-	j = 0;
-	tmp = *line;
-	while (tmp[i] && (ft_isdigit(tmp[i]) == 1) || tmp[i] == ' ')
-		i++;
-	if ((int)ft_strlen(tmp + i) != map->map_width)
-	{
-		ft_strdel(line);
-		return (0);
-	}
-	while (tmp[i])
-	{
-		if (tmp[i] != 'O' && tmp[i] != 'o' && tmp[i] != '.' && tmp[i] != 'X' && tmp[i] != 'x')
-		{
-			ft_strdel(line);
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-int		write_line(char *line)
-{
-	if (!ft_check_line(&str, map))
-		return (0);
-	m->map[] = ft_strcpy(m->map[], line + ?);
-}
-
-int		fill_map(t_map *m)
-{
-	int		i;
-	int		j;
 	char	*line;
 
-	i = 0;
-	j = 0;
+	i = 5;
 	line = NULL;
-	if (get_next_line(0, &line) <= 0)
-		return (0);
-	while (get_next_line(0, &line) > 0)
+	if (get_next_line(0, &line) > 0)
 	{
-		if (ft_strncmp(line, "000", 3) == 0)
-		{
-			while (get_next_line(0, &line) > 0)
-			{
-				write_line(line);
-			}
-		}
-		ft_strdel(&line);
-		break ;
+		if (!ft_strncmp(line, "Piece ", 5))
+			return (0);
+		if ((m->piece_height = ft_atoi(line + 5)) == 0)
+			return (0);
+		while (line[i] && ft_isdigit(line[i] == 1) && line[i] != ' ')
+			i++;
+		if ((m->piece_width = ft_atoi(line + 5)) == 0)
+			return (0);		
+	}
+	while ()
+	{
+
 	}
 	return (1);
 }
@@ -162,6 +116,8 @@ int		main(void)
 	{
 		if (!fill_map(&m))
 			return (0);
+		if (!get_piece(&m))
+			return (0);				
 	}
 	return (0);
 }
