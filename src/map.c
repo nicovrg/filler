@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/19 00:07:16 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/20 00:05:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int		fill_map(t_map *m)
 		m->map[j] = ft_strcpy(m->map[j], line + i);
 		ft_strdel(&line);
 		j++;
-        if (ft_atoi(line) == m->map_height - 1)
-            break ;
+		if (ft_atoi(line) == m->map_height - 1)
+			break ;
 	}
 	m->map[j] = 0;
 	return (1);

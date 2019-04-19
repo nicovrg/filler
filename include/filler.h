@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/18 23:54:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/20 00:05:16 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,16 @@ typedef struct	s_map {
 	int		piece_height;
 	char	**piece;
 }				t_map;
+
+//main.c
+int		init_struct(t_map *m);
+int		get_player_id(t_map *m);
+int		get_map_dimensions(t_map *m);
+int		get_piece(t_map *m);
+
+//map.c
+int		allocate_map(t_map *m);
+int		check_line(char **line, t_map *m);
+int		fill_map(t_map *m);
 
 #endif

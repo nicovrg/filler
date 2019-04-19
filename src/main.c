@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/19 00:29:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/20 00:28:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ int		get_player_id(t_map *m)
 	char *line;
 
 	line = NULL;
-	if (!get_next_line(0, &line) != 1)
+	if (get_next_line(0, &line) != 1)
 		return (0);
 	if (!strncmp(line, "$$$ exec p", 10))
 	{
 		ft_strdel(&line);
 		return (0);
 	}
-	if (!line[10] || (line[10] && line[10] != "1" && line[10] != "2"))
+	if (!line[10] || (line[10] && (ft_strncmp(line + 10, "1", 1) != 0 || ft_strncmp(line + 10, "2", 1) != 0)))
 	{
 		ft_strdel(&line);
 		return (0);
 	}
-	m->player_id = line[10] == "1" ? 1 : 2;
+	m->player_id = ft_strncmp(line + 10, "1", 1) != 0 ? 1 : 2;
 	ft_strdel(&line);
 	return (1);
 }
@@ -69,7 +69,7 @@ int		get_map_dimensions(t_map *m)
 
 	i = 0;
 	line = NULL;
-	if (!get_next_line(0, &line) != 1)
+	if (!(get_next_line(0, &line) != 1))
 		return (0);
 	while (line[i] && !ft_isdigit(line[i]))
 		i++;
@@ -97,11 +97,11 @@ int		get_piece(t_map *m)
 		while (line[i] && ft_isdigit(line[i] == 1) && line[i] != ' ')
 			i++;
 		if ((m->piece_width = ft_atoi(line + 5)) == 0)
-			return (0);		
+			return (0);
 	}
 	while ()
 	{
-
+		
 	}
 	return (1);
 }
@@ -117,7 +117,7 @@ int		main(void)
 		if (!fill_map(&m))
 			return (0);
 		if (!get_piece(&m))
-			return (0);				
+			return (0);
 	}
 	return (0);
 }
