@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/20 00:28:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/21 16:03:11 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,31 +78,6 @@ int		get_map_dimensions(t_map *m)
 		i++;
 	m->map_width = ft_atoi(line + i);
 	ft_strdel(&line);
-	return (1);
-}
-
-int		get_piece(t_map *m)
-{
-	int		i;
-	char	*line;
-
-	i = 5;
-	line = NULL;
-	if (get_next_line(0, &line) > 0)
-	{
-		if (!ft_strncmp(line, "Piece ", 5))
-			return (0);
-		if ((m->piece_height = ft_atoi(line + 5)) == 0)
-			return (0);
-		while (line[i] && ft_isdigit(line[i] == 1) && line[i] != ' ')
-			i++;
-		if ((m->piece_width = ft_atoi(line + 5)) == 0)
-			return (0);
-	}
-	while ()
-	{
-		
-	}
 	return (1);
 }
 
