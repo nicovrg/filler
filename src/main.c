@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/21 16:03:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/22 15:58:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		get_player_id(t_map *m)
 	line = NULL;
 	if (get_next_line(0, &line) != 1)
 		return (0);
-	if (!strncmp(line, "$$$ exec p", 10))
+	if (!ft_strncmp(line, "$$$ exec p", 10))
 	{
 		ft_strdel(&line);
 		return (0);

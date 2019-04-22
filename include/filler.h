@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/21 16:02:46 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/22 16:00:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_map {
 }				t_map;
 
 //main.c
+int		ft_isdigit_space(int c);
 int		init_struct(t_map *m);
 int		get_player_id(t_map *m);
 int		get_map_dimensions(t_map *m);
@@ -33,5 +34,10 @@ int		get_piece(t_map *m);
 int		allocate_map(t_map *m);
 int		check_line(char **line, t_map *m);
 int		fill_map(t_map *m);
+
+//piece.c
+int		allocate_piece(t_map *m);
+int		fill_piece(t_map *m);
+int		get_piece(t_map *m);
 
 #endif

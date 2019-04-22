@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/04/18 23:20:45 by nivergne         ###   ########.fr        #
+#    Updated: 2019/04/22 16:05:18 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ OBJ_PATH = 	./obj
 
 SRC_FILLER =				main.c\
 							map.c\
+							piece.c\
 							filler.c
 
 UNDER	=					\x1b[4m
@@ -68,8 +69,7 @@ all: logo libft $(NAME)
 
 $(NAME): $(INC) $(OBJ)
 	@$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)
-	@echo "\033[38;2;0;255;255mFiller\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
-	@echo "\033[38;2;0;255;255mFiller\t\033[38;2;255;0;0m$(NAME)\t\t\033[0;32m[OK]\033[0m"
+	@echo "$(BOLD)$(CYAN)$(BOLD)FILLER			$(BLUE)$(BOLD)compile		$(GREEN)[OK]$(END)"
 
 libft:
 	@$(MAKE) -C libft/
