@@ -6,21 +6,18 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/22 16:01:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:57:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "filler.h"
 
-int		allocate_piece(t_map *m)
+int		allocate_piece(t_info *m)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-
 	if (!(m->piece = (char **)malloc(sizeof(char *) * (m->piece_height + 1))))
 		return (0);
 	while (i < m->piece_height)
@@ -33,7 +30,7 @@ int		allocate_piece(t_map *m)
 	return (1);
 }
 
-int		fill_piece(t_map *m)
+int		fill_piece(t_info *m)
 {
 	int i;
 	char	*line;
@@ -50,7 +47,7 @@ int		fill_piece(t_map *m)
 	return (1);
 }
 
-int		get_piece(t_map *m)
+int		get_piece(t_info *m)
 {
 	int		i;
 	char	*line;
@@ -63,7 +60,7 @@ int		get_piece(t_map *m)
 			return (0);
 		if ((m->piece_height = ft_atoi(line + 5)) == 0)
 			return (0);
-		while (line[i] && ft_isdigit(line[i] == 1) && line[i] != ' ')
+		while (line[i] && ft_isdigit(line[i] == 1))
 			i++;
 		if ((m->piece_width = ft_atoi(line + 5)) == 0)
 			return (0);

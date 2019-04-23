@@ -6,14 +6,14 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/22 15:59:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:57:24 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "filler.h"
 
-int		allocate_map(t_map *m)
+int		allocate_map(t_info *m)
 {
 	int i;
 
@@ -30,7 +30,7 @@ int		allocate_map(t_map *m)
 	return (0);
 }
 
-int		check_line(char **line, t_map *m)
+int		check_line(char **line, t_info *m)
 {
 	int		i;
 	int		j;
@@ -58,7 +58,7 @@ int		check_line(char **line, t_map *m)
 	return (1);
 }
 
-int		fill_map(t_map *m)
+int		fill_map(t_info *m)
 {
 	int		i;
 	int		j;
@@ -76,10 +76,12 @@ int		fill_map(t_map *m)
 		while (line[i] && ft_isdigit_space(line[i] == 1))
 			i++;
 		m->map[j] = ft_strcpy(m->map[j], line + i);
-		ft_strdel(&line);
 		j++;
 		if (ft_atoi(line) == m->map_height - 1)
+		{
+			ft_strdel(&line);
 			break ;
+		}
 	}
 	m->map[j] = 0;
 	return (1);

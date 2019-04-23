@@ -6,21 +6,14 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/22 15:58:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/23 18:59:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "filler.h"
 
-int		ft_isdigit_space(int c)
-{
-	if ((c >= '0' && c <= '9') || c == ' ') 
-		return (1);
-	return (0);
-}
-
-int		init_struct(t_map *m)
+int		init_struct(t_info *m)
 {
 	if (!get_player_id(m))
 	{
@@ -40,13 +33,16 @@ int		init_struct(t_map *m)
 	return (1);
 }
 
-int		get_player_id(t_map *m)
+int		get_player_id(t_info *m)
 {
 	char *line;
 
 	line = NULL;
-	if (get_next_line(0, &line) != 1)
+	if (get_next_line(0, &line) <= 0)
+	{
+		write(1, "SHIT\n", 5);
 		return (0);
+	}
 	if (!ft_strncmp(line, "$$$ exec p", 10))
 	{
 		ft_strdel(&line);
@@ -62,14 +58,14 @@ int		get_player_id(t_map *m)
 	return (1);
 }
 
-int		get_map_dimensions(t_map *m)
+int		get_map_dimensions(t_info *m)
 {
 	int i;
 	char *line;
 
 	i = 0;
 	line = NULL;
-	if (!(get_next_line(0, &line) != 1))
+	if (!(get_next_line(0, &line) <= 0))
 		return (0);
 	while (line[i] && !ft_isdigit(line[i]))
 		i++;
@@ -83,16 +79,28 @@ int		get_map_dimensions(t_map *m)
 
 int		main(void)
 {
-	t_map	m;
+	t_info	m;
+	t_play	p;
 
 	if (!init_struct(&m))
 		return (0);
 	while (1)
 	{
 		if (!fill_map(&m))
+		{
+			ft_free_tab(m.map);
 			return (0);
+		}
 		if (!get_piece(&m))
+		{
+			ft_free_tab(m.map);
+			ft_free_tab(m.piece);
 			return (0);
+		}
+		if (!place_piece(&m, &p))
+			break ;
 	}
+	ft_free_tab(m.map);
+	ft_free_tab(m.piece);
 	return (0);
 }
