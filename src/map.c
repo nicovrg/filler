@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/23 18:57:24 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/24 14:02:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		allocate_map(t_info *m)
 	return (0);
 }
 
-int		check_line(char **line, t_info *m)
+int		check_map_line(char **line, t_info *m)
 {
 	int		i;
 	int		j;
@@ -71,7 +71,7 @@ int		fill_map(t_info *m)
 		return (0);
 	while (get_next_line(0, &line) > 0)
 	{
-		if (!check_line(&line, m))
+		if (!check_map_line(&line, m))
 			return (0);
 		while (line[i] && ft_isdigit_space(line[i] == 1))
 			i++;

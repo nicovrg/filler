@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/04/22 16:05:18 by nivergne         ###   ########.fr        #
+#    Updated: 2019/04/24 13:55:15 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ INC_PATH = 	./include
 OBJ_PATH = 	./obj
 
 SRC_FILLER =				main.c\
+							init.c\
 							map.c\
 							piece.c\
 							filler.c

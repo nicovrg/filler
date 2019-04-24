@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/23 18:57:23 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/04/24 14:08:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,33 @@ int		allocate_piece(t_info *m)
 	return (1);
 }
 
-int		fill_piece(t_info *m)
+int		check_piece_line(char *line, t_info *m)
 {
 	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != '.' && line[i] != '*')
+			return (0);
+		i++;
+	}
+	if (i != m->piece_width)
+		return (0);
+	return (1);
+}
+
+int		fill_piece(t_info *m)
+{
+	int 	i;
 	char	*line;
 
 	i = 0;
 	line = NULL;
 	while (i < m->piece_height && get_next_line(0, &line) > 0)
 	{
+		if (!check_piece_line(line, m))
+			return (0);
 		m->piece[i] = ft_strcpy(m->piece[i], line);
 		i++;
 	}
