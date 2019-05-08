@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/24 14:26:42 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:57:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@ int		ft_free_tab(char **tab)
 	i = 0;
 	while (tab[i] != 0)
 	{
-		ft_strdel(tab[i]);
+		ft_strdel(&tab[i]);
 		i++;
 	}
 	ft_strdel(tab);
 	return (1);
+}
+
+int		ft_error(char **line, char *error_msg)
+{
+	ft_strdel(&line);
+	return (0);
 }
 
 int		main(void)
@@ -57,6 +63,7 @@ int		main(void)
 		if (!play_round(&m, &p))
 			break ;
 		p.round++;
+		ft_free_tab(m.piece);
 	}
 	ft_free_tab(m.map);
 	ft_free_tab(m.piece);

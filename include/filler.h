@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/24 14:26:49 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:51:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_play {
 //for the moment, contain basics functions that could be added to libft
 int		ft_isdigit_space(int c);
 int		ft_free_tab(char **tab);
+int		ft_error(char **line, char *error_msg);
 
 //init.c
 //get static information about the game: player_id, map_dimensions 

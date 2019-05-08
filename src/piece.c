@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/24 14:08:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:55:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,23 @@ int		get_piece(t_info *m)
 	int		i;
 	char	*line;
 
-	i = 5;
-	line = NULL;
+	i = 6;
+	line = NULL;	
 	if (get_next_line(0, &line) > 0)
 	{
 		if (!ft_strncmp(line, "Piece ", 5))
-			return (0);
-		if ((m->piece_height = ft_atoi(line + 5)) == 0)
-			return (0);
+			return (ft_error(&line, "Invalid syntaxe for \"Piece\""));
+		if ((m->piece_height = ft_atoi(line + i)) == 0)
+			return (ft_error(&line, "Invalid piece height"));
 		while (line[i] && ft_isdigit(line[i] == 1))
 			i++;
-		if ((m->piece_width = ft_atoi(line + 5)) == 0)
-			return (0);
+		if ((m->piece_width = ft_atoi(line + i)) == 0)
+			return (ft_error(&line, "Invalid piece width"));
+		ft_strdel(&line);
 	}
-	if (!allocate_piece(m))
+	else
 		return (0);
-	if (!fill_piece(m))
+	if (!allocate_piece(m) || !fill_piece(m))
 		return (0);
 	return (1);
 }

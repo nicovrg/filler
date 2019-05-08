@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/24 14:02:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:28:40 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,29 @@ int		fill_map(t_info *m)
 {
 	int		i;
 	int		j;
+	int		map_h;
 	char	*line;
 
 	i = 0;
 	j = 0;
+	map_h = 0;
 	line = NULL;
 	if (get_next_line(0, &line) <= 0)
 		return (0);
-	while (get_next_line(0, &line) > 0)
+	ft_strdel(&line);
+	while (map_h < m->map_height)
 	{
-		if (!check_map_line(&line, m))
+		if (get_next_line(0, &line) <= 0)
 			return (0);
 		while (line[i] && ft_isdigit_space(line[i] == 1))
 			i++;
-		m->map[j] = ft_strcpy(m->map[j], line + i);
-		j++;
-		if (ft_atoi(line) == m->map_height - 1)
+		if (!check_map_line(&line + i, m))
 		{
 			ft_strdel(&line);
-			break ;
+			return (0);
 		}
+		m->map[j] = ft_strcpy(m->map[j], line + i);
+		j++;
 	}
 	m->map[j] = 0;
 	return (1);

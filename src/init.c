@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/04/24 13:54:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:31:29 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,8 @@ int		get_player_id(t_info *m)
 
 	line = NULL;
 	if (get_next_line(0, &line) <= 0)
-	{
-		write(1, "SHIT\n", 5);
 		return (0);
-	}
-	if (!ft_strncmp(line, "$$$ exec p", 10))
+	if (!ft_strncmp(line, "$$$ exec p", 10)) // : [players/nivergne.filler]
 	{
 		ft_strdel(&line);
 		return (0);
