@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/14 02:58:50 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:08:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ typedef struct	s_info {
 	char	opponent_id;
 	int		map_width;
 	int		map_height;
-	char	**map;
 	int		piece_width;
 	int		piece_height;
+	char	**map;
 	char	**piece;
 	int		piece_first_x;
 	int		piece_first_y;
@@ -30,6 +30,8 @@ typedef struct	s_play {
 	int		round;
 	int		map_x;
 	int		map_y;
+	int		map_x2;
+	int		map_y2;
 	int		test_x;
 	int		test_y;
 	int		map_fin_x;
@@ -48,6 +50,7 @@ int		ft_error_free(char **line, char *error_msg);
 //init.c
 //get static information about the game: player_id, map_dimensions 
 int		init_struct(t_info *m, t_play *p);
+int		check_player_name(char *line);
 int		get_player_id(t_info *m);
 int		get_map_dimensions(t_info *m);
 int		set_rest(t_info *m, t_play *p);
@@ -55,7 +58,7 @@ int		set_rest(t_info *m, t_play *p);
 //map.c
 //allocate the map, check if lines are valid, fill the **map
 int		allocate_map(t_info *m);
-int		check_map_line(char **line, t_info *m);
+int		check_map_line(char *line, t_info *m);
 int		fill_map(t_info *m);
 
 //piece.c
@@ -67,6 +70,7 @@ int		get_corner(t_info *m);
 int		get_piece(t_info *m);
 
 //filler.c
+//iterate through map, check if we can place piece, check distance from player piece vs opponent piece, repeat until best solution is found
 int		play(t_info *m, t_play *p);
 int		map_iterate(t_info *m, t_play *p);
 int		check_place(t_info *m, t_play *p);

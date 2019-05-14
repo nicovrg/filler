@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/14 02:25:26 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:41:03 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,15 @@ int		init_struct(t_info *m, t_play *p)
 
 int		get_player_id(t_info *m)
 {
-	char *line;
+	char	*line;
 
 	line = NULL;
 	if (get_next_line(0, &line) <= 0)
-		return (0);
+		return (ft_error("fail to read the first line\n"));
 	if (!ft_strncmp(line, "$$$ exec p", 10))
-	{
-		ft_strdel(&line);
-		return (0);
-	}
+		return (ft_error_free(&line, "player number is invalid\n"));
 	if (!line[10] || (line[10] && (ft_strncmp(&line[10], "1", 1) == 0 && ft_strncmp(&line[10], "2", 1) == 0)))
-	{
-		ft_strdel(&line);
-		return (0);
-	}
+		return (ft_error_free(&line, "player number is invalid\n"));
 	m->player_id = ft_strncmp(&line[10], "1", 1) == 0 ? 'O' : 'X';
 	m->opponent_id = ft_strncmp(&line[10], "1", 1) == 0 ? 'X' : '0';
 	ft_strdel(&line);
@@ -51,8 +45,8 @@ int		get_player_id(t_info *m)
 
 int		get_map_dimensions(t_info *m)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	line = NULL;
@@ -77,9 +71,39 @@ int		set_rest(t_info *m, t_play *p)
 	p->round = 0;
 	p->map_x = 0;
 	p->map_y = 0;
+	p->map_x2 = 0;
+	p->map_y2 = 0;
 	p->test_x = 0;
 	p->test_y = 0;
 	p->map_fin_x = 0;
 	p->map_fin_y = 0;
 	return (1);
 }
+
+
+// if (!check_player_name(line))
+// 	return (ft_error_free(&line, "player name is invalid\n"));
+
+// int		check_player_name(char *line)
+// {
+// 	int check;
+
+// 	check = 0;
+// 	if (!ft_strncmp(line + 14, "nivergne.filler", 15))
+// 		check = 1;
+// 	else if (!ft_strncmp(line + 14, "hcao.filler", 11))
+// 		check = 1;
+// 	else if (!ft_strncmp(line + 14, "carli.filler", 12))
+// 		check = 1;
+// 	else if (!ft_strncmp(line + 14, "grati.filler", 12))
+// 		check = 1;
+// 	else if (!ft_strncmp(line + 14, "abanlin.filler", 14))
+// 		check = 1;
+// 	else if (!ft_strncmp(line + 14, "champely.filler", 15))
+// 		check = 1;
+// 	else if (!ft_strncmp(line + 14, "superjeannot.filler", 19))
+// 		check = 1;
+// 	if (check == 0)
+// 		return (0);
+// 	return (1);
+// }

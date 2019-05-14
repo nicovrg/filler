@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/14 02:59:13 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:45:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,32 @@ int		get_dist_one(t_info *m, t_play *p)
 {
 	int		distance;
 
-	p->map_y = 0;
-	while (p->map_y < m->piece_height)
+	p->map_y2 = 0;
+	while (p->map_y2 < m->piece_height)
 	{
-		p->map_x = 0;
-		while (p->map_x < m->piece_width)
+		printf("p->map_y2 = %d\n", p->map_y2);
+		p->map_x2 = 0;
+		while (p->map_x2 < m->piece_width)
 		{
+			printf("p->map_x2 = %d\n", p->map_x2);
 			if (m->piece[p->map_y][p->map_x] == '*')
 			{
 				distance = 1;
 				while (distance <= p->best_distance)
 				{
+					printf("haha\n");
 					if (get_dist_two(distance, m, p) != 0 && distance < p->best_distance)
 					{
 						p->best_distance = distance;
-						p->map_fin_x = p->map_x;
-						p->map_fin_y = p->map_y;
+						p->map_fin_x = p->map_x2;
+						p->map_fin_y = p->map_y2;
 					}
 					distance++;
 				}
 			}
-			p->map_x++;
+			p->map_x2++;
 		}
-		p->map_y++;
+		p->map_y2++;
 	}
 	return (1);
 }
@@ -116,9 +119,11 @@ int		check_place(t_info *m, t_play *p)
 	p->test_y = -1;
 	while (++p->test_y < m->piece_height)
 	{
+		// printf("YYY  %d\n", p->test_y);
 		p->test_x = -1;
 		while (++p->test_x < m->piece_width)
 		{
+			// printf("X    %d\n", p->test_x);
 			if (!check_limit(m, p))
 			{
 				if (m->piece[p->test_y][p->test_x] == '*')
@@ -137,18 +142,27 @@ int		check_place(t_info *m, t_play *p)
 
 int		map_iterate(t_info *m, t_play *p)
 {
+	int		i;
+
+	i = 0;
 	p->map_y = -m->piece_first_y;
 	while (p->map_y < m->map_height)
 	{
 		p->map_x = -m->piece_first_x;
 		while (p->map_x < m->map_width)
 		{
+			// printf("m->piece_height = %d\nm->piece_width = %d\n", m->piece_height, m->piece_width);
 			if (check_place(m, p) == 1)
+			{
+				i++;
+				printf("call get_dist_one%d\n", i);
 				get_dist_one(m, p);
+			}
 			p->map_x++;
 		}
 		p->map_y++;
 	}
+	printf("fin\n");
 	return (1);
 }
 
@@ -156,11 +170,9 @@ int		play(t_info *m, t_play *p)
 {
 	if (!map_iterate(m, p))
 		return (ft_error("no place found for piece on map"));
-	printf("p->map_fin_x = %d\np->map_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
+	// printf("p->map_fin_x = %d\np->map_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
 	write_piece_position(p->map_fin_x, p->map_fin_y);
 	if (p->map_fin_x == 0 && p->map_fin_y == 0)
 		return (0);
 	return (1);
 }
-	// printf("%s\n", line);
-	// write(1, "coucou\n", 7);
