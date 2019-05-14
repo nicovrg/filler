@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/08 16:55:46 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/14 02:23:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		allocate_piece(t_info *m)
 	while (i < m->piece_height)
 	{
 		if (!(m->piece[i] = (char *)malloc(sizeof(char) * (m->piece_width + 1))))	
-			return (0);	
+			return (0);
 		i++;
 	}
-	m->piece[m->piece_height] = 0;
+	m->piece[i] = 0;
 	return (1);
 }
 
@@ -38,11 +38,14 @@ int		check_piece_line(char *line, t_info *m)
 	while (line[i])
 	{
 		if (line[i] != '.' && line[i] != '*')
-			return (0);
+			return (ft_error("invalid piece character - check_piece_line\n"));
 		i++;
 	}
+	printf("%s\n", line);
+	printf("%d\n", i);
+	printf("%d\n", m->piece_width);
 	if (i != m->piece_width)
-		return (0);
+		return (ft_error("invalid piece size - check_piece_line\n"));
 	return (1);
 }
 
@@ -53,8 +56,13 @@ int		fill_piece(t_info *m)
 
 	i = 0;
 	line = NULL;
-	while (i < m->piece_height && get_next_line(0, &line) > 0)
+	if (get_next_line(0, &line) <= 0)
+		return (0);
+	ft_strdel(&line);
+	while (i < m->piece_height)
 	{
+		if (get_next_line(0, &line) <= 0)
+			return (0);
 		if (!check_piece_line(line, m))
 			return (0);
 		m->piece[i] = ft_strcpy(m->piece[i], line);
@@ -65,28 +73,55 @@ int		fill_piece(t_info *m)
 	return (1);
 }
 
+int		get_corner(t_info *m)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	k = 0;
+	while (i < m->piece_height)
+	{
+		j = 0;
+		while (j < m->piece_width)
+		{
+			if (m->piece[i][j] == '*' && k == 0)
+			{
+				m->piece_first_y = i;
+				m->piece_first_x = j;
+				k++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int		get_piece(t_info *m)
 {
 	int		i;
 	char	*line;
 
 	i = 6;
-	line = NULL;	
+	line = NULL;
 	if (get_next_line(0, &line) > 0)
 	{
 		if (!ft_strncmp(line, "Piece ", 5))
-			return (ft_error(&line, "Invalid syntaxe for \"Piece\""));
-		if ((m->piece_height = ft_atoi(line + i)) == 0)
-			return (ft_error(&line, "Invalid piece height"));
+			return (ft_error_free(&line, "Invalid syntaxe for \"Piece\""));
+		printf("%d\n", m->piece_height);
+		if (!((m->piece_height = ft_atoi(line + i)) == 0))
+			return (ft_error_free(&line, "Invalid piece height"));
 		while (line[i] && ft_isdigit(line[i] == 1))
 			i++;
-		if ((m->piece_width = ft_atoi(line + i)) == 0)
-			return (ft_error(&line, "Invalid piece width"));
+		if (!((m->piece_width = ft_atoi(line + i)) == 0))
+			return (ft_error_free(&line, "Invalid piece width"));
 		ft_strdel(&line);
 	}
 	else
 		return (0);
-	if (!allocate_piece(m) || !fill_piece(m))
-		return (0);
+	if (!allocate_piece(m) || !fill_piece(m) || !get_corner(m))
+		return (ft_error("can't create piece"));
 	return (1);
 }

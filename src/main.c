@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/08 16:57:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/14 02:31:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,26 @@ int		ft_free_tab(char **tab)
 	return (1);
 }
 
-int		ft_error(char **line, char *error_msg)
+int		ft_error(char *error_msg)
 {
-	ft_strdel(&line);
+	ft_putendl_fd(error_msg, 2);
+	return (0);
+}
+
+int		ft_error_free(char **line, char *error_msg)
+{
+	ft_putendl_fd(error_msg, 2);
+	ft_strdel(line);
+	return (0);
+}
+
+int		ft_error_free_tab(t_info *m, char *error_msg)
+{
+	ft_putendl_fd(error_msg, 2);
+	if (m->map)
+		ft_free_tab(m->map);
+	if (m->piece)
+		ft_free_tab(m->piece);
 	return (0);
 }
 
@@ -45,22 +62,16 @@ int		main(void)
 	t_info	m;
 	t_play	p;
 
-	if (!init_struct(&m))
+	if (!init_struct(&m, &p))
 		return (0);
 	while (1)
 	{
+		p.best_distance = 2147483647;
 		if (!fill_map(&m))
-		{
-			ft_free_tab(m.map);
-			return (0);
-		}
+			return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		if (!get_piece(&m))
-		{
-			ft_free_tab(m.map);
-			ft_free_tab(m.piece);
-			return (0);
-		}
-		if (!play_round(&m, &p))
+			return (ft_error_free_tab(&m, "problem in get_piece\n"));
+		if (!play(&m, &p))
 			break ;
 		p.round++;
 		ft_free_tab(m.piece);

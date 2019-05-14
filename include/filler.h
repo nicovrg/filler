@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/08 15:51:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/14 02:58:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,26 @@
 
 typedef struct	s_info {
 	char	player_id;
+	char	opponent_id;
 	int		map_width;
 	int		map_height;
 	char	**map;
 	int		piece_width;
 	int		piece_height;
 	char	**piece;
+	int		piece_first_x;
+	int		piece_first_y;
 }				t_info;
 
 typedef struct	s_play {
+	int		round;
 	int		map_x;
 	int		map_y;
-	int		piece_x;
-	int		piece_y;
-	int		round;
+	int		test_x;
+	int		test_y;
+	int		map_fin_x;
+	int		map_fin_y;
+	int		best_distance;
 }				t_play;
 
 
@@ -36,13 +42,15 @@ typedef struct	s_play {
 //for the moment, contain basics functions that could be added to libft
 int		ft_isdigit_space(int c);
 int		ft_free_tab(char **tab);
-int		ft_error(char **line, char *error_msg);
+int		ft_error(char *error_msg);
+int		ft_error_free(char **line, char *error_msg);
 
 //init.c
 //get static information about the game: player_id, map_dimensions 
-int		init_struct(t_info *m);
+int		init_struct(t_info *m, t_play *p);
 int		get_player_id(t_info *m);
 int		get_map_dimensions(t_info *m);
+int		set_rest(t_info *m, t_play *p);
 
 //map.c
 //allocate the map, check if lines are valid, fill the **map
@@ -55,9 +63,18 @@ int		fill_map(t_info *m);
 int		allocate_piece(t_info *m);
 int		check_piece_line(char *line, t_info *m);
 int		fill_piece(t_info *m);
+int		get_corner(t_info *m);
 int		get_piece(t_info *m);
 
 //filler.c
-int		play_round(t_info *m, t_play *p);
+int		play(t_info *m, t_play *p);
+int		map_iterate(t_info *m, t_play *p);
+int		check_place(t_info *m, t_play *p);
+int		check_ally(t_info *m, t_play *p);
+int		check_opponent(t_info *m, t_play *p);
+int		check_limit(t_info *m, t_play *p);
+int		get_dist_one(t_info *m, t_play *p);
+int		get_dist_two(int distance, t_info *m, t_play *p);
+int		write_piece_position(int x, int y);
 
 #endif

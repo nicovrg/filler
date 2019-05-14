@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/04/24 13:55:15 by nivergne         ###   ########.fr        #
+#    Updated: 2019/05/12 18:33:58 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,10 +77,10 @@ libft:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@echo "\033[38;2;0;255;0m[cc]\033[0m: $< -> $@"
-	@printf "\e[1A"
+#	@echo "\033[38;2;0;255;0m[cc]\033[0m: $< -> $@"
+#	@printf "\e[1A"	
 	@$(CC) $(FLAGS) $(INCLUDE) $(LIBFTOBJ) -c $< -o $@
-	@printf "\e[0K"
+#	@printf "\e[0K"
 
 clean:
 	@$(MAKE) -C libft/ clean
