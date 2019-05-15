@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 01:38:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:43:57 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		main(void)
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		if (!get_piece(&m))
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
+		// ft_check_parse(&m, &p);
 		if (!play(&m, &p))
 			// break ;
 		p.round++;
@@ -80,4 +81,36 @@ int		main(void)
 	ft_free_tab(m.map);
 	ft_free_tab(m.piece);
 	return (0);
+}
+
+int		ft_check_parse(t_info *m, t_play *p)
+{
+	printf("m->player_id = %c\n", m->player_id);
+	printf("m->opponent_id = %c\n", m->opponent_id);
+	printf("\n");
+	printf("m->map_height = %d\n", m->map_height);
+	printf("m->map_width = %d\n", m->map_width);
+	printf("\n");
+	printf("m->piece_height = %d\n", m->piece_height);
+	printf("m->piece_width = %d\n", m->piece_width);
+	printf("\n");	
+	printf("m->piece_first_x = %d\n", m->piece_first_x);
+	printf("m->piece_first_y = %d\n", m->piece_first_y);
+	printf("\n");
+	printf("p->round = %d\n", p->round);
+	printf("\n");	
+	printf("p->map_x = %d\n", p->map_x);
+	printf("p->map_y = %d\n", p->map_y);
+	printf("\n");	
+	printf("p->map_x2 = %d\n", p->map_x2);
+	printf("p->map_y2 = %d\n", p->map_y2);
+	printf("\n");	
+	printf("p->test_x = %d\n", p->test_x);
+	printf("p->test_y = %d\n", p->test_y);
+	printf("\n");
+	printf("p->map_fin_x = %d\n", p->map_fin_x);
+	printf("p->map_fin_y = %d\n", p->map_fin_y);
+	printf("\n");
+	printf("p->best_distance = %d\n", p->best_distance);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 01:41:03 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:42:32 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int		get_player_id(t_info *m)
 		return (ft_error_free(&line, "player number is invalid\n"));
 	if (!line[10] || (line[10] && (ft_strncmp(&line[10], "1", 1) == 0 && ft_strncmp(&line[10], "2", 1) == 0)))
 		return (ft_error_free(&line, "player number is invalid\n"));
-	m->player_id = ft_strncmp(&line[10], "1", 1) == 0 ? 'O' : 'X';
-	m->opponent_id = ft_strncmp(&line[10], "1", 1) == 0 ? 'X' : '0';
+	m->player_id = ft_strncmp(&line[11], "1", 1) == 0 ? 'O' : 'X';
+	m->opponent_id = ft_strncmp(&line[11], "1", 1) == 0 ? 'X' : 'O';
 	ft_strdel(&line);
 	return (1);
 }

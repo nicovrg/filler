@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 01:45:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:26:37 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		get_dist_one(t_info *m, t_play *p)
 		while (p->map_x2 < m->piece_width)
 		{
 			printf("p->map_x2 = %d\n", p->map_x2);
+			printf("%c\n", m->piece[p->map_y2][p->map_x2]);
 			if (m->piece[p->map_y][p->map_x] == '*')
 			{
 				distance = 1;

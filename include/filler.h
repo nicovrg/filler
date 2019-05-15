@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 01:08:53 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/15 15:30:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		ft_isdigit_space(int c);
 int		ft_free_tab(char **tab);
 int		ft_error(char *error_msg);
 int		ft_error_free(char **line, char *error_msg);
+int		ft_check_parse(t_info *m, t_play *p);
 
 //init.c
 //get static information about the game: player_id, map_dimensions 
