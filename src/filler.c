@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 15:26:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 00:34:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ int		get_dist_one(t_info *m, t_play *p)
 		{
 			printf("p->map_x2 = %d\n", p->map_x2);
 			printf("%c\n", m->piece[p->map_y2][p->map_x2]);
-			if (m->piece[p->map_y][p->map_x] == '*')
+			if (m->piece[p->map_y2][p->map_x2] == '*')
 			{
 				distance = 1;
 				while (distance <= p->best_distance)
 				{
-					printf("haha\n");
+					// printf("haha\n");
 					if (get_dist_two(distance, m, p) != 0 && distance < p->best_distance)
 					{
 						p->best_distance = distance;
@@ -153,11 +153,12 @@ int		map_iterate(t_info *m, t_play *p)
 		while (p->map_x < m->map_width)
 		{
 			// printf("m->piece_height = %d\nm->piece_width = %d\n", m->piece_height, m->piece_width);
+			// printf("p->map_y = %d\np->map_x = %d\n", p->map_y, p->map_x);
 			if (check_place(m, p) == 1)
 			{
 				i++;
 				printf("call get_dist_one%d\n", i);
-				get_dist_one(m, p);
+				// get_dist_one(m, p);
 			}
 			p->map_x++;
 		}
