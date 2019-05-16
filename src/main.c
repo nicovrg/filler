@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 03:55:39 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 22:04:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		ft_free_tab(char **tab)
 		ft_strdel(&tab[i]);
 		i++;
 	}
-	ft_strdel(&tab[i]);
-	ft_strdel(tab);
+	// ft_strdel(tab);
+	free(tab);
 	return (1);
 }
 

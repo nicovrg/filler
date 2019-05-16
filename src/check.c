@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:53:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 04:05:42 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 21:05:44 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		check_ally(t_info *m, t_play *p)
 
 	x = p->map_x + p->piece_x;
 	y = p->map_y + p->piece_y;
-	if (m->map[y][x] == m->player_id && m->piece[p->piece_y][p->piece_x] == '*')
+	if (x >= 0 && y >= 0 && m->map[y][x] == m->player_id && m->piece[p->piece_y][p->piece_x] == '*')
 		return (1);
 	return (0);
 }
@@ -32,8 +32,8 @@ int		check_opponent(t_info *m, t_play *p)
 
 	x = p->map_x + p->piece_x;
 	y = p->map_y + p->piece_y;
-		// printf("m->map[y][x] = %c\n", m->map[y][x]);
-	if (m->map[y][x] == m->opponent_id && m->piece[p->piece_y][p->piece_x] == '*')
+		// printf("m->map[y][x] = %c\ny = %d\nx = %d\n", m->map[y][x], y, x);
+	if (x >= 0 && y >= 0 && m->map[y][x] == m->opponent_id && m->piece[p->piece_y][p->piece_x] == '*')
 		return (1);
 	return (0);
 }

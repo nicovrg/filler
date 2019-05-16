@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 03:29:23 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 21:41:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,17 @@ int		get_player_id(t_info *m)
 	// printf("%d\n", ft_strncmp(line, "$$$ exec p", 10));
 	// if (ft_strncmp(line, "$$$ exec p", 10) != 0)
 		// return (ft_error_free(&line, "player format is invalid\n"));
-	// printf("line = %c d\n", line[11]);
-	if (line[11] && !(ft_strncmp(&line[11], "1", 1) == 0) && !(ft_strncmp(&line[11], "2", 1) == 0))
+	// printf("line = %c\n", line[11]);
+	if (line[11] && !(ft_strncmp(&line[13], "1", 1) == 0) && !(ft_strncmp(&line[13], "2", 1) == 0))
 		return (ft_error_free(&line, "player number is invalid\n"));
-	m->player_id = ft_strncmp(&line[11], "1", 1) == 0 ? 'O' : 'X';
-	m->opponent_id = ft_strncmp(&line[11], "1", 1) == 0 ? 'X' : 'O';
+	m->player_id = ft_strncmp(&line[13], "1", 1) == 0 ? 'O' : 'X';
+	m->opponent_id = ft_strncmp(&line[13], "1", 1) == 0 ? 'X' : 'O';
 	ft_strdel(&line);
 	return (1);
 }
 
 //bug home vs school, line 11 vs line 13
+//ttys
 
 int		get_map_dimensions(t_info *m)
 {
