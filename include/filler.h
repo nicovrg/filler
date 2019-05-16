@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 15:30:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 03:32:44 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ typedef struct	s_play {
 	int		round;
 	int		map_x;
 	int		map_y;
-	int		map_x2;
-	int		map_y2;
-	int		test_x;
-	int		test_y;
+	int		piece_x;
+	int		piece_y;
+	int		piece_x2;
+	int		piece_y2;
 	int		map_fin_x;
 	int		map_fin_y;
+	int		distance;
 	int		best_distance;
 }				t_play;
 
@@ -71,15 +72,21 @@ int		get_corner(t_info *m);
 int		get_piece(t_info *m);
 
 //filler.c
-//iterate through map, check if we can place piece, check distance from player piece vs opponent piece, repeat until best solution is found
-int		play(t_info *m, t_play *p);
+//play, iteration on map, write position
+int		write_piece_position(int x, int y);
 int		map_iterate(t_info *m, t_play *p);
+int		play(t_info *m, t_play *p);
+
+//check.c
+// check if we can place piece
 int		check_place(t_info *m, t_play *p);
 int		check_ally(t_info *m, t_play *p);
 int		check_opponent(t_info *m, t_play *p);
 int		check_limit(t_info *m, t_play *p);
+
+//distance.c
+// check distance from player piece vs opponent piece
 int		get_dist_one(t_info *m, t_play *p);
-int		get_dist_two(int distance, t_info *m, t_play *p);
-int		write_piece_position(int x, int y);
+int		get_dist_two(t_info *m, t_play *p);
 
 #endif

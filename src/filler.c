@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 00:34:35 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 04:06:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,125 +20,6 @@ int		write_piece_position(int x, int y)
 	ft_putnbr(x);
 	write(1, "\n", 1);
 	return (1);
-}
-
-int		get_dist_two(int distance, t_info *m, t_play *p)
-{
-	int i;
-	int x;
-	int y;
-
-	i = 0;
-	x = p->map_x + p->test_x;
-	y = p->map_y + p->test_y;
-	while (distance >= 0)
-	{
-		if ((y + distance < m->map_height && x + i < m->map_width && m->map[y + distance][x + i] == m->opponent_id)
-		|| ((y - distance >= 0 && x + i < m->map_width && m->map[y - distance][x + i] == m->opponent_id))
-		|| ((y + distance < m->map_height && x - i >= 0 && m->map[y + distance][x - i] == m->opponent_id))
-		|| ((y - distance >= 0 && x - i >= 0 && m->map[y - distance][x - i] == m->opponent_id)))
-			return (distance);
-		i++;
-		distance--;
-	}
-	return (0);
-}
-
-int		get_dist_one(t_info *m, t_play *p)
-{
-	int		distance;
-
-	p->map_y2 = 0;
-	while (p->map_y2 < m->piece_height)
-	{
-		printf("p->map_y2 = %d\n", p->map_y2);
-		p->map_x2 = 0;
-		while (p->map_x2 < m->piece_width)
-		{
-			printf("p->map_x2 = %d\n", p->map_x2);
-			printf("%c\n", m->piece[p->map_y2][p->map_x2]);
-			if (m->piece[p->map_y2][p->map_x2] == '*')
-			{
-				distance = 1;
-				while (distance <= p->best_distance)
-				{
-					// printf("haha\n");
-					if (get_dist_two(distance, m, p) != 0 && distance < p->best_distance)
-					{
-						p->best_distance = distance;
-						p->map_fin_x = p->map_x2;
-						p->map_fin_y = p->map_y2;
-					}
-					distance++;
-				}
-			}
-			p->map_x2++;
-		}
-		p->map_y2++;
-	}
-	return (1);
-}
-
-int		check_ally(t_info *m, t_play *p)
-{
-	int	x;
-	int y;
-
-	x = p->map_x + p->test_x;
-	y = p->map_y + p->test_y;
-	if (m->map[y][x] == m->player_id && m->piece[p->test_y][p->test_x] == '*')
-		return (1);
-	return (0);
-}
-
-int		check_opponent(t_info *m, t_play *p)
-{
-	int	x;
-	int y;
-
-	x = p->map_x + p->test_x;
-	y = p->map_y + p->test_y;
-	if (m->map[y][x] == m->opponent_id && m->piece[p->test_y][p->test_x] == '*')
-		return (1);
-	return (0);
-}
-
-int		check_limit(t_info *m, t_play *p)
-{
-	if (p->map_y + p->test_y >= m->map_height || p->map_x + p->test_x >= m->map_width)
-		return (0);
-	else if (p->map_y + p->test_y < 0 || p->map_x + p->test_x < 0)
-		return (0);
-	return (1);
-}
-
-int		check_place(t_info *m, t_play *p)
-{
-	int start;
-
-	start = 0;
-	p->test_y = -1;
-	while (++p->test_y < m->piece_height)
-	{
-		// printf("YYY  %d\n", p->test_y);
-		p->test_x = -1;
-		while (++p->test_x < m->piece_width)
-		{
-			// printf("X    %d\n", p->test_x);
-			if (!check_limit(m, p))
-			{
-				if (m->piece[p->test_y][p->test_x] == '*')
-					return (0);
-				else
-					continue ;
-			}
-			if (check_ally(m, p) == 1)
-				start++;
-			if (check_opponent(m, p) == 1 || start > 1)
-				return (0);
-		}
-	}
-	return (start);
 }
 
 int		map_iterate(t_info *m, t_play *p)
@@ -157,14 +38,14 @@ int		map_iterate(t_info *m, t_play *p)
 			if (check_place(m, p) == 1)
 			{
 				i++;
-				printf("call get_dist_one%d\n", i);
-				// get_dist_one(m, p);
+				// printf("call get_dist_one%d\np->map_y = %d\np->map_x = %d\n", i, p->map_y, p->map_x);
+				get_dist_one(m, p);
 			}
 			p->map_x++;
 		}
 		p->map_y++;
 	}
-	printf("fin\n");
+	// printf("fin\n");
 	return (1);
 }
 

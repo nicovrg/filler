@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 00:10:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 03:29:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,20 @@ int		get_player_id(t_info *m)
 	line = NULL;
 	if (get_next_line(0, &line) <= 0)
 		return (ft_error("fail to read the first line\n"));
+	// printf("line = %s\n", line);
+	// printf("%d\n", ft_strncmp(line, "$$$ exec p", 10));
 	// if (ft_strncmp(line, "$$$ exec p", 10) != 0)
-	// 	return (ft_error_free(&line, "player format is invalid\n"));
-	if (line[13] && !(ft_strncmp(&line[13], "1", 1) == 0) && !(ft_strncmp(&line[13], "2", 1) == 0))
+		// return (ft_error_free(&line, "player format is invalid\n"));
+	// printf("line = %c d\n", line[11]);
+	if (line[11] && !(ft_strncmp(&line[11], "1", 1) == 0) && !(ft_strncmp(&line[11], "2", 1) == 0))
 		return (ft_error_free(&line, "player number is invalid\n"));
-	m->player_id = ft_strncmp(&line[13], "1", 1) == 0 ? 'O' : 'X';
-	m->opponent_id = ft_strncmp(&line[13], "1", 1) == 0 ? 'X' : 'O';
+	m->player_id = ft_strncmp(&line[11], "1", 1) == 0 ? 'O' : 'X';
+	m->opponent_id = ft_strncmp(&line[11], "1", 1) == 0 ? 'X' : 'O';
 	ft_strdel(&line);
 	return (1);
 }
+
+//bug home vs school, line 11 vs line 13
 
 int		get_map_dimensions(t_info *m)
 {
@@ -71,12 +76,14 @@ int		set_rest(t_info *m, t_play *p)
 	p->round = 0;
 	p->map_x = 0;
 	p->map_y = 0;
-	p->map_x2 = 0;
-	p->map_y2 = 0;
-	p->test_x = 0;
-	p->test_y = 0;
+	p->piece_x = 0;
+	p->piece_y = 0;
+	p->piece_x2 = 0;
+	p->piece_y2 = 0;
 	p->map_fin_x = 0;
 	p->map_fin_y = 0;
+	p->distance = 0;
+	p->best_distance = 0;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 23:23:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/16 03:55:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		main(void)
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		if (!get_piece(&m))
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
-		ft_check_parse(&m, &p);
+		// ft_check_parse(&m, &p);
 		if (!play(&m, &p))
 			// break ;
 		p.round++;
@@ -102,11 +102,11 @@ int		ft_check_parse(t_info *m, t_play *p)
 	printf("p->map_x = %d\n", p->map_x);
 	printf("p->map_y = %d\n", p->map_y);
 	printf("\n");	
-	printf("p->map_x2 = %d\n", p->map_x2);
-	printf("p->map_y2 = %d\n", p->map_y2);
-	printf("\n");	
-	printf("p->test_x = %d\n", p->test_x);
-	printf("p->test_y = %d\n", p->test_y);
+	printf("p->piece_x = %d\n", p->piece_x);
+	printf("p->piece_y = %d\n", p->piece_y);
+	printf("\n");
+	printf("p->piece_x = %d\n", p->piece_x2);
+	printf("p->piece_y = %d\n", p->piece_y2);
 	printf("\n");
 	printf("p->map_fin_x = %d\n", p->map_fin_x);
 	printf("p->map_fin_y = %d\n", p->map_fin_y);

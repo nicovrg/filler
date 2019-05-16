@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/05/16 00:22:43 by nivergne         ###   ########.fr        #
+#    Updated: 2019/05/16 02:53:14 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRC_FILLER =				main.c\
 							init.c\
 							map.c\
 							piece.c\
-							filler.c
+							filler.c\
+							check.c\
+							distance.c
 
 UNDER	=					\x1b[4m
 BOLD	=					\x1b[1m
