@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:53:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:30:43 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/20 00:07:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ int		check_place(t_info *m, t_play *p)
 				return (0);
 		}
 	}
-	return (1);
+	return (start);
 }

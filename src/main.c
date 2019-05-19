@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:36:05 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/20 00:08:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		main(void)
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		if (!get_piece(&m))
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
-		ft_check_parse(&m, &p);
+		// ft_check_parse(&m, &p);
 		if (!play(&m, &p))
 			// break ;
 		p.round++;
