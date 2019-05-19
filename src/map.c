@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 21:50:30 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/19 22:33:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int		allocate_map(t_info *m)
 	int i;
 
 	i = 0;
-	if (!(m->map = (char **)malloc(sizeof(char *) * (m->map_height + 1))))
+	if (!(m->map = (char **)ft_memalloc(sizeof(char *) * (m->map_height + 1))))
 		return (0);
 	while (i < m->map_height)
 	{
-		if (!(m->map[i] = (char *)malloc(sizeof(char) * (m->map_width + 1))))
+		if (!(m->map[i] = (char *)ft_memalloc(sizeof(char) * (m->map_width + 1))))
 			return (0);
 		i++;
 	}
@@ -75,10 +75,10 @@ int		fill_map(t_info *m)
 		if (!check_map_line(line + i, m))
 			return (ft_error_free(&line, "wrong map line in fill_map\n"));
 		m->map[j] = ft_strcpy(m->map[j], line + i);
+		ft_strdel(&line);
 		index_height++;
 		j++;
 	}
-	ft_strdel(&line);
 	m->map[j] = 0;
 	return (1);
 }

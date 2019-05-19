@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/15 01:30:51 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/19 22:09:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ int		fill_piece(t_info *m)
 	while (i < m->piece_height)
 	{
 		if (get_next_line(0, &line) <= 0)
-			return (ft_error_free(&line, "problem in fill piece"));
+			return (ft_error("problem in fill piece"));
 		if (!check_piece_line(line, m))
 			return (0);
 		m->piece[i] = ft_strcpy(m->piece[i], line);
+		ft_strdel(&line);
 		i++;
 	}
 	if (i != m->piece_height)

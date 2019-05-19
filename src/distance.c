@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/16 04:05:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/19 22:31:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,19 @@ int		get_dist_one(t_info *m, t_play *p)
 	p->piece_y2 = 0;
 	while (p->piece_y2 < m->piece_height)
 	{
-		// printf("p->piece_y2 = %d\n", p->piece_y2);
 		p->piece_x2 = 0;
 		while (p->piece_x2 < m->piece_width)
 		{
-			// printf("p->piece_x2 = %d\n", p->piece_x2);
-			// printf("%c\n", m->piece[p->piece_y2][p->piece_x2]);
 			if (m->piece[p->piece_y2][p->piece_x2] == '*')
 			{
 				p->distance = 1;
 				while (p->distance <= p->best_distance)
 				{
-					// printf("distance = %d\n", p->distance);
 					if (get_dist_two(m, p) != 0 && p->distance < p->best_distance)
 					{
 						p->best_distance = p->distance;
 						p->map_fin_x = p->map_x;
 						p->map_fin_y = p->map_y;
-						// printf("map_fin_x = %d\nmap_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
 					}
 					p->distance++;
 				}
