@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/20 00:08:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:00:38 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ int		main(void)
 	t_play	p;
 
 	if (!init_struct(&m, &p))
-		return (ft_error_free_tab(&m, "problem in init_struct\n"));
+		return (ft_error("problem in init_struct\n"));
+	if (!allocate_map(&m))
+		return (ft_error_free_tab(&m, "error during map allocation\n"));
 	// while (1)
 	// {
 		p.best_distance = 2147483647;

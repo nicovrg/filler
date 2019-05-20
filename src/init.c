@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:27:46 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:59:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int		init_struct(t_info *m, t_play *p)
 		return (ft_error("player_id is incorrect\n"));
 	if (!get_map_dimensions(m))
 		return (ft_error("map_dimensions incorrect\n"));
-	if (!allocate_map(m))
-		return (ft_error("error during map allocation\n"));
 	if (!set_rest(m, p))
 		return (ft_error("error while setting struct var to 0\n"));
 	return (1);
