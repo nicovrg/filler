@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/20 16:59:50 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/21 03:06:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int		get_player_id(t_info *m)
 		return (ft_error("fail to read the first line\n"));
 	// if (ft_strncmp(line, "$$$ exec p", 10) != 0)
 		// return (ft_error_free(&line, "player format is invalid\n"));
-	if (line[11] && !(ft_strncmp(&line[13], "1", 1) == 0) && !(ft_strncmp(&line[13], "2", 1) == 0))
+	// printf("%s\n", line);
+	if (line[12] && !(ft_strncmp(&line[12], "1", 1) == 0) && !(ft_strncmp(&line[12], "2", 1) == 0))
 		return (ft_error_free(&line, "player number is invalid\n"));
-	m->player_id = ft_strncmp(&line[13], "1", 1) == 0 ? 'O' : 'X';
-	m->opponent_id = ft_strncmp(&line[13], "1", 1) == 0 ? 'X' : 'O';
+	m->player_id = ft_strncmp(&line[12], "1", 1) == 0 ? 'O' : 'X';
+	m->opponent_id = ft_strncmp(&line[12], "1", 1) == 0 ? 'X' : 'O';
 	ft_strdel(&line);
 	return (1);
 }

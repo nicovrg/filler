@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/20 17:00:38 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/21 03:03:02 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int		main(void)
 		return (ft_error("problem in init_struct\n"));
 	if (!allocate_map(&m))
 		return (ft_error_free_tab(&m, "error during map allocation\n"));
-	// while (1)
-	// {
+	while (1)
+	{
 		p.best_distance = 2147483647;
 		if (!fill_map(&m))
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
@@ -77,10 +77,10 @@ int		main(void)
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
 		// ft_check_parse(&m, &p);
 		if (!play(&m, &p))
-			// break ;
+			break ;
 		p.round++;
 		ft_free_tab(m.piece);
-	// }
+	}
 	ft_free_tab(m.map);
 	return (0);
 }

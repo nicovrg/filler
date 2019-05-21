@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:31:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/05/21 02:56:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@
 int		get_dist_two(t_info *m, t_play *p)
 {
 	int i;
+	int j;
 	int x;
 	int y;
-	int distance_tmp;
 
 	i = 0;
+	j = p->distance;
 	x = p->map_x + p->piece_x;
 	y = p->map_y + p->piece_y;
-	distance_tmp = p->distance;
-	while (distance_tmp >= 0)
+	while (j >= 0 && x < m->map_width && y < m->map_height)
 	{
-		if ((y + distance_tmp < m->map_height && x + i < m->map_width && m->map[y + distance_tmp][x + i] == m->opponent_id)
-		|| ((y - distance_tmp >= 0 && x + i < m->map_width && m->map[y - distance_tmp][x + i] == m->opponent_id))
-		|| ((y + distance_tmp < m->map_height && x - i >= 0 && m->map[y + distance_tmp][x - i] == m->opponent_id))
-		|| ((y - distance_tmp >= 0 && x - i >= 0 && m->map[y - distance_tmp][x - i] == m->opponent_id)))
-			return (distance_tmp);
+		if ((y + j < m->map_height && x + i < m->map_width && m->map[y + j][x + i] == m->opponent_id)
+		|| ((y - j >= 0 && x + i < m->map_width && m->map[y - j][x + i] == m->opponent_id))
+		|| ((y + j < m->map_height && x - i >= 0 && m->map[y + j][x - i] == m->opponent_id))
+		|| ((y - j >= 0 && x - i >= 0 && m->map[y - j][x - i] == m->opponent_id)))
+			return (j);
 		i++;
-		distance_tmp--;
+		j--;
 	}
 	return (0);
 }
