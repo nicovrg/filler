@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/21 02:43:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:12:29 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ int		write_piece_position(int x, int y)
 
 int		map_iterate(t_info *m, t_play *p)
 {
-	int		i;
-
-	i = 0;
 	p->map_y = -m->piece_first_y;
 	while (p->map_y < m->map_height)
 	{
@@ -34,10 +31,7 @@ int		map_iterate(t_info *m, t_play *p)
 		while (p->map_x < m->map_width)
 		{
 			if (check_place(m, p) == 1)
-			{
-				i++;
 				get_dist_one(m, p);
-			}
 			p->map_x++;
 		}
 		p->map_y++;

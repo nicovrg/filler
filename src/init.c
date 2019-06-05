@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/21 03:06:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:55:00 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,19 @@ int		get_map_dimensions(t_info *m)
 	return (1);
 }
 
+int		init_round(t_play *p)
+{
+	p->map_x = 0;
+	p->map_y = 0;
+	p->piece_x = 0;
+	p->piece_y = 0;
+	p->map_fin_x = 0;
+	p->map_fin_y = 0;
+	p->distance = 0;
+	p->best_distance = 100;
+	return (1);
+}
+
 int		set_rest(t_info *m, t_play *p)
 {
 	m->piece_width = 0;
@@ -72,11 +85,8 @@ int		set_rest(t_info *m, t_play *p)
 	p->map_y = 0;
 	p->piece_x = 0;
 	p->piece_y = 0;
-	p->piece_x2 = 0;
-	p->piece_y2 = 0;
 	p->map_fin_x = 0;
 	p->map_fin_y = 0;
 	p->distance = 0;
-	p->best_distance = 0;
 	return (1);
 }

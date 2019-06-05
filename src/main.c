@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/21 03:03:02 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:54:12 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int		main(void)
 		return (ft_error_free_tab(&m, "error during map allocation\n"));
 	while (1)
 	{
-		p.best_distance = 2147483647;
+		if (!init_round(&p))
+			return (ft_error("problem in init_round\n"));
 		if (!fill_map(&m))
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		if (!get_piece(&m))
@@ -107,8 +108,8 @@ int		ft_check_parse(t_info *m, t_play *p)
 	printf("p->piece_x = %d\n", p->piece_x);
 	printf("p->piece_y = %d\n", p->piece_y);
 	printf("\n");
-	printf("p->piece_x = %d\n", p->piece_x2);
-	printf("p->piece_y = %d\n", p->piece_y2);
+	printf("p->piece_x = %d\n", p->piece_x);
+	printf("p->piece_y = %d\n", p->piece_y);
 	printf("\n");
 	printf("p->map_fin_x = %d\n", p->map_fin_x);
 	printf("p->map_fin_y = %d\n", p->map_fin_y);

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/21 02:56:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:46:44 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,20 @@ int		get_dist_two(t_info *m, t_play *p)
 
 int		get_dist_one(t_info *m, t_play *p)
 {
-	p->piece_y2 = 0;
-	while (p->piece_y2 < m->piece_height)
+	int i = 0;
+	p->piece_y = 0;
+	while (p->piece_y < m->piece_height)
 	{
-		p->piece_x2 = 0;
-		while (p->piece_x2 < m->piece_width)
+		p->piece_x = 0;
+		while (p->piece_x < m->piece_width)
 		{
-			if (m->piece[p->piece_y2][p->piece_x2] == '*')
+			if (m->piece[p->piece_y][p->piece_x] == '*')
 			{
 				p->distance = 1;
 				while (p->distance <= p->best_distance)
 				{
+					i++;
+					printf ("%d\n", i);
 					if (get_dist_two(m, p) != 0 && p->distance < p->best_distance)
 					{
 						p->best_distance = p->distance;
@@ -59,9 +62,9 @@ int		get_dist_one(t_info *m, t_play *p)
 					p->distance++;
 				}
 			}
-			p->piece_x2++;
+			p->piece_x++;
 		}
-		p->piece_y2++;
+		p->piece_y++;
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:53:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/20 00:07:45 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:56:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ int		check_place(t_info *m, t_play *p)
 		while (++p->piece_x < m->piece_width)
 		{
 			if (!check_limit(m, p))
+			{
 				if (m->piece[p->piece_y][p->piece_x] == '*')
 					return (0);
+				else
+					continue ;
+			}
 			if (check_ally(m, p) == 1)
 				start++;
 			if (check_opponent(m, p) == 1 || start > 1)

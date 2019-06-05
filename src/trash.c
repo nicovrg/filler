@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 22:24:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:31:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:46:44 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@
 	// printf("fin\n");
 
 //distance - get_distance_one
-	// printf("p->piece_y2 = %d\n", p->piece_y2);
-	// printf("p->piece_x2 = %d\n", p->piece_x2);
-	// printf("%c\n", m->piece[p->piece_y2][p->piece_x2]);
+	// printf("p->piece_y = %d\n", p->piece_y);
+	// printf("p->piece_x = %d\n", p->piece_x);
+	// printf("%c\n", m->piece[p->piece_y][p->piece_x]);
 	// printf("distance = %d\n", p->distance);
 	// printf("map_fin_x = %d\nmap_fin_y = %d\n", p->map_fin_x, p->map_fin_y);

@@ -6,12 +6,14 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:24:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/05 02:54:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FILLER_H
 # define _FILLER_H
+
+#include <stdio.h>
 
 typedef struct	s_info {
 	char	player_id;
@@ -32,8 +34,6 @@ typedef struct	s_play {
 	int		map_y;
 	int		piece_x;
 	int		piece_y;
-	int		piece_x2;
-	int		piece_y2;
 	int		map_fin_x;
 	int		map_fin_y;
 	int		distance;
@@ -55,6 +55,7 @@ int		init_struct(t_info *m, t_play *p);
 int		check_player_name(char *line);
 int		get_player_id(t_info *m);
 int		get_map_dimensions(t_info *m);
+int		init_round(t_play *p);
 int		set_rest(t_info *m, t_play *p);
 
 //map.c
