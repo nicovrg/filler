@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/05 02:54:05 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/07 02:10:09 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <stdio.h>
 
-typedef struct	s_info {
+typedef struct	s_info 
+{
 	char	player_id;
 	char	opponent_id;
 	int		map_width;
@@ -28,7 +29,8 @@ typedef struct	s_info {
 	int		piece_first_y;
 }				t_info;
 
-typedef struct	s_play {
+typedef struct	s_play 
+{
 	int		round;
 	int		map_x;
 	int		map_y;
