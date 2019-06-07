@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/06/07 02:15:08 by nivergne         ###   ########.fr        #
+#    Updated: 2019/06/07 03:52:35 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,8 @@ SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILLER))
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
-all: logo libft $(NAME)
+all: libft $(NAME)
+#logo
 
 $(NAME): $(INC) $(OBJ)
 	@$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)

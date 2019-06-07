@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/07 02:10:09 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/07 05:18:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct	s_play
 	int		best_distance;
 }				t_play;
 
-
 //main.c
 //for the moment, contain basics functions that could be added to libft
 int		ft_isdigit_space(int c);
@@ -55,6 +54,7 @@ int		ft_check_parse(t_info *m, t_play *p);
 //get static information about the game: player_id, map_dimensions 
 int		init_struct(t_info *m, t_play *p);
 int		check_player_name(char *line);
+int		set_player_id(t_info *m, int ret);
 int		get_player_id(t_info *m);
 int		get_map_dimensions(t_info *m);
 int		init_round(t_play *p);

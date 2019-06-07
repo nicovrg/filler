@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/05 02:46:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/07 04:18:40 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		get_dist_one(t_info *m, t_play *p)
 				while (p->distance <= p->best_distance)
 				{
 					i++;
-					printf ("%d\n", i);
+					// ft_printf("%d\n", i);
 					if (get_dist_two(m, p) != 0 && p->distance < p->best_distance)
 					{
 						p->best_distance = p->distance;

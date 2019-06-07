@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/05 02:55:00 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/07 05:19:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,41 @@ int		init_struct(t_info *m, t_play *p)
 	return (1);
 }
 
+int		set_player_id(t_info *m, int ret)
+{
+	if (ret == 1)
+	{
+		m->player_id = 'O';
+		m->opponent_id = 'X';
+		return (1);
+	}
+	else if (ret == 2)
+	{
+		m->player_id = 'X';
+		m->opponent_id = 'X';
+		return (1);
+	}
+	return (0);
+}
+
 int		get_player_id(t_info *m)
 {
+	int		i;
+	int		ret;
 	char	*line;
 
+	i = 0;
+	ret = 0;
 	line = NULL;
 	if (get_next_line(0, &line) <= 0)
 		return (ft_error("fail to read the first line\n"));
-	// if (ft_strncmp(line, "$$$ exec p", 10) != 0)
-		// return (ft_error_free(&line, "player format is invalid\n"));
-	// printf("%s\n", line);
-	if (line[12] && !(ft_strncmp(&line[12], "1", 1) == 0) && !(ft_strncmp(&line[12], "2", 1) == 0))
+	if (ft_strncmp(line, "$$$ exec p", 10) != 0)
+		return (ft_error_free(&line, "player format is invalid\n"));
+	while (!ft_isdigit(line[i]))
+		i++;
+	ret = ft_atoi(line + i);
+	if (!set_player_id(m, ret))
 		return (ft_error_free(&line, "player number is invalid\n"));
-	m->player_id = ft_strncmp(&line[12], "1", 1) == 0 ? 'O' : 'X';
-	m->opponent_id = ft_strncmp(&line[12], "1", 1) == 0 ? 'X' : 'O';
 	ft_strdel(&line);
 	return (1);
 }
