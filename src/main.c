@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/07 04:11:46 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/12 00:01:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		main(void)
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		if (!get_piece(&m))
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
-		ft_check_parse(&m, &p);
+		// ft_check_parse(&m, &p);
 		if (!play(&m, &p))
 			break ;
 		p.round++;
@@ -89,7 +89,7 @@ int		main(void)
 int		ft_check_parse(t_info *m, t_play *p)
 {
 	printf("m->player_id = %c\n", m->player_id);
-	printf("m->opponent_id = %c\n", m->opponent_id);
+	printf("m->enemy_id = %c\n", m->enemy_id);
 	printf("\n");
 	printf("m->map_height = %d\n", m->map_height);
 	printf("m->map_width = %d\n", m->map_width);

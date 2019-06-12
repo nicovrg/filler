@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/05/19 22:09:50 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:13:13 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,28 @@ int		fill_piece(t_info *m)
 	return (1);
 }
 
-int		get_corner(t_info *m)
+int		get_piece_start(t_info *m)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = 0;
-	k = 0;
 	while (i < m->piece_height)
 	{
 		j = 0;
 		while (j < m->piece_width)
 		{
-			if (m->piece[i][j] == '*' && k == 0)
+			if (m->piece[i][j] == '*')
 			{
 				m->piece_first_y = i;
 				m->piece_first_x = j;
-				k++;
+				return (1);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int		get_piece(t_info *m)
@@ -115,7 +113,7 @@ int		get_piece(t_info *m)
 	}
 	else
 		return (0);
-	if (!allocate_piece(m) || !fill_piece(m) || !get_corner(m))
-		return (ft_error("can't create piece"));
+	if (!allocate_piece(m) || !fill_piece(m) || !get_piece_start(m))
+		return (ft_error("problem in get_piece"));
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/07 05:19:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/12 01:45:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int		set_player_id(t_info *m, int ret)
 	if (ret == 1)
 	{
 		m->player_id = 'O';
-		m->opponent_id = 'X';
+		m->enemy_id = 'X';
 		return (1);
 	}
 	else if (ret == 2)
 	{
 		m->player_id = 'X';
-		m->opponent_id = 'X';
+		m->enemy_id = 'O';
 		return (1);
 	}
 	return (0);
@@ -108,6 +108,7 @@ int		set_rest(t_info *m, t_play *p)
 	p->piece_y = 0;
 	p->map_fin_x = 0;
 	p->map_fin_y = 0;
+	p->link = 0;
 	p->distance = 0;
 	return (1);
 }

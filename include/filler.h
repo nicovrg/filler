@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/07 05:18:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/12 03:06:10 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct	s_info 
 {
 	char	player_id;
-	char	opponent_id;
+	char	enemy_id;
 	int		map_width;
 	int		map_height;
 	int		piece_width;
@@ -38,6 +38,7 @@ typedef struct	s_play
 	int		piece_y;
 	int		map_fin_x;
 	int		map_fin_y;
+	int		link;
 	int		distance;
 	int		best_distance;
 }				t_play;
@@ -71,7 +72,7 @@ int		fill_map(t_info *m);
 int		allocate_piece(t_info *m);
 int		check_piece_line(char *line, t_info *m);
 int		fill_piece(t_info *m);
-int		get_corner(t_info *m);
+int		get_piece_start(t_info *m);
 int		get_piece(t_info *m);
 
 //filler.c
@@ -84,12 +85,20 @@ int		play(t_info *m, t_play *p);
 // check if we can place piece
 int		check_place(t_info *m, t_play *p);
 int		check_ally(t_info *m, t_play *p);
-int		check_opponent(t_info *m, t_play *p);
+int		check_enemy(t_info *m, t_play *p);
 int		check_limit(t_info *m, t_play *p);
 
-//distance.c
+//distance_one.c
 // check distance from player piece vs opponent piece
-int		get_dist_one(t_info *m, t_play *p);
-int		get_dist_two(t_info *m, t_play *p);
+int		check_limit_two(int i, int j, t_info *m, t_play *p);
+int		compare_distance(t_play *p);
+int		echo(int test, t_info *m, t_play *p);
+int		get_distance(t_info *m, t_play *p);
+
+//distance_two.c
+// int		dist_up(int test, t_info *m, t_play *p);
+// int		dist_right(int test, t_info *m, t_play *p);
+// int		dist_down(int test, t_info *m, t_play *p);
+// int		dist_left(int test, t_info *m, t_play *p);
 
 #endif

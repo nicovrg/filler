@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/05 02:12:29 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/12 17:07:19 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		map_iterate(t_info *m, t_play *p)
 		while (p->map_x < m->map_width)
 		{
 			if (check_place(m, p) == 1)
-				get_dist_one(m, p);
+				get_distance(m, p);
 			p->map_x++;
 		}
 		p->map_y++;

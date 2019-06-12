@@ -38,7 +38,6 @@ Plateau 15 17:
 *************
 
 
-
 $$$ exec p1
 Plateau 3 3:
 
