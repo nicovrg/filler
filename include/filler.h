@@ -6,14 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/17 15:55:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:29:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FILLER_H
 # define _FILLER_H
-
-#include <stdio.h>
 
 typedef struct	s_info 
 {
@@ -94,11 +92,5 @@ int		check_limit_two(int i, int j, t_info *m, t_play *p);
 int		compare_distance(int distance, t_play *p);
 int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);
-
-//distance_two.c
-// int		dist_up(int test, t_info *m, t_play *p);
-// int		dist_right(int test, t_info *m, t_play *p);
-// int		dist_down(int test, t_info *m, t_play *p);
-// int		dist_left(int test, t_info *m, t_play *p);
 
 #endif
