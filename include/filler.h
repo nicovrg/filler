@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/12 03:06:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/17 15:55:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int		check_limit(t_info *m, t_play *p);
 //distance_one.c
 // check distance from player piece vs opponent piece
 int		check_limit_two(int i, int j, t_info *m, t_play *p);
-int		compare_distance(t_play *p);
+int		compare_distance(int distance, t_play *p);
 int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);
 
