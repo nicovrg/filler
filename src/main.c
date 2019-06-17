@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/14 22:42:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/18 01:22:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,38 @@ int		main(void)
 {
 	t_info	m;
 	t_play	p;
-
+	
+	int fd = 0;
+	if ((fd = open("test", O_WRONLY)) == -1)
+		ft_putstr("couldn't open file\n");
+	
 	if (!init_struct(&m, &p))
 		return (ft_error("problem in init_struct\n"));
 	if (!allocate_map(&m))
 		return (ft_error_free_tab(&m, "error during map allocation\n"));
 	while (1)
 	{
+		// write(fd, "GOGOGO1\n", 8);
 		if (!init_round(&p))
 			return (ft_error("problem in init_round\n"));
+		// write(fd, "GOGOGO2\n", 8);	
 		if (!fill_map(&m))
 			return (ft_error_free_tab(&m, "problem in fill_map\n"));
+		// write(fd, "GOGOGO3\n", 8);
 		if (!get_piece(&m))
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
-		ft_check_parse(&m, &p);
-		if (!play(&m, &p))
+		// ft_check_parse(&m, &p);
+		// write(fd, "GOGOGO4\n", 8);
+		if (!play(&m, &p, fd))
+		{
+			// write(fd, "GOGOGO5\n", 8);
 			break ;
+		}
+		// write(fd, "GOGOGO6\n", 8);
 		p.round++;
 		ft_free_tab(m.piece);
 	}
+	// write(fd, "GOGOGO7\n", 8);
 	ft_free_tab(m.map);
 	return (0);
 }

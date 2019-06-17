@@ -22,7 +22,7 @@ Plateau 15 17:
 008 ..O..............
 009 .................
 010 .................
-011 .................
+011 .......O.........
 012 ..............X..
 013 .................
 014 .................
@@ -48,8 +48,6 @@ Plateau 15 17:
 012 ..............X..
 013 .................
 014 .................
-
-
 Piece 2 2
 **
 **
@@ -60,15 +58,15 @@ Plateau 15 17:
 000 .......F.........
 001 ........F........
 002 .........F.......
-003 .X........F......
-004 XXX........F.....
-005 XXXX........F....
-006 XXXXX........F...
-007 XOXXXX........F..
-008 XXXXX........F...
-009 XXXX........F....
-010 XXX........F.....
-011 .X........F......
+003 ..........F......
+004 ...........F.....
+005 .X..........F....
+006 .XX..........F...
+007 XOXX..........F..
+008 .XX..........F...
+009 .X..........F....
+010 ...........F.....
+011 ..........F......
 012 .........F....X..
 013 ........F........
 014 .......F.........
@@ -136,74 +134,14 @@ init - check_player_name
 		return (1);
 	}
 
-iller - play
+filler - play
 	printf("p->map_fin_x = %d\np->map_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
 
-iller - map_iterate
+filler - map_iterate
 	printf("m->piece_height = %d\nm->piece_width = %d\n", m->piece_height, m->piece_width);
 	printf("p->map_y = %d\np->map_x = %d\n", p->map_y, p->map_x);
 	printf("call get_dist_one%d\np->map_y = %d\np->map_x = %d\n", i, p->map_y, p->map_x);
 	printf("fin\n");
 
-istance - get_distance_one
-	printf("p->piece_y = %d\n", p->piece_y);
-	printf("p->piece_x = %d\n", p->piece_x);
-	printf("%c\n", m->piece[p->piece_y][p->piece_x]);
-	printf("distance = %d\n", p->distance);
-	printf("map_fin_x = %d\nmap_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
-
- int		get_dist_two(t_info *m, t_play *p)
- {
- 	int i;
- 	int j;
- 	int x;
- 	int y;
-
- 	i = 0;
- 	j = p->distance;
- 	x = p->map_x + p->piece_x;
- 	y = p->map_y + p->piece_y;
- 	while (j >= 0 && x < m->map_width && y < m->map_height)
- 	{
- 		if ((y + j < m->map_height && x + i < m->map_width && m->map[y + j][x + i] == m->enemy_id)
- 		|| ((y - j >= 0 && x + i < m->map_width && m->map[y - j][x + i] == m->enemy_id))
- 		|| ((y + j < m->map_height && x - i >= 0 && m->map[y + j][x - i] == m->enemy_id))
- 		|| ((y - j >= 0 && x - i >= 0 && m->map[y - j][x - i] == m->enemy_id)))
- 			return (j);
- 		i++;
- 		j--;
- 	}
- 	return (0);
- }
-
- int		get_dist_one(t_info *m, t_play *p)
- {
- 	int i = 0;
- 	p->piece_y = 0;
- 	while (p->piece_y < m->piece_height)
- 	{
- 		p->piece_x = 0;
- 		while (p->piece_x < m->piece_width)
- 		{
- 			if (m->piece[p->piece_y][p->piece_x] == '*')
- 			{
- 				p->distance = 1;
- 				while (p->distance <= p->best_distance)
- 				{
- 					i++;
- 					 ft_printf("%d\n", i);
- 					if (get_dist_two(m, p) != 0 && p->distance < p->best_distance)
- 					{
- 						p->best_distance = p->distance;
- 						p->map_fin_x = p->map_x;
- 						p->map_fin_y = p->map_y;
- 					}
- 					p->distance++;
- 				}
- 			}
- 			p->piece_x++;
- 		}
- 		p->piece_y++;
- 	}
- 	return (1);
- }
+distance_one - compare_distance
+	printf("distance = %d\tp->map_y = %d\tp->map_x = %d\n", distance, p->map_y, p->map_x);

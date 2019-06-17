@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 13:54:41 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/12 01:45:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/17 20:59:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ int		init_round(t_play *p)
 	p->piece_y = 0;
 	p->map_fin_x = 0;
 	p->map_fin_y = 0;
-	p->distance = 0;
 	p->best_distance = 100;
 	return (1);
 }
@@ -109,6 +108,5 @@ int		set_rest(t_info *m, t_play *p)
 	p->map_fin_x = 0;
 	p->map_fin_y = 0;
 	p->link = 0;
-	p->distance = 0;
 	return (1);
 }

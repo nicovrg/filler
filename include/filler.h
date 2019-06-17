@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/17 16:29:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/18 01:25:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct	s_play
 	int		map_fin_x;
 	int		map_fin_y;
 	int		link;
-	int		distance;
 	int		best_distance;
 }				t_play;
 
@@ -76,8 +75,8 @@ int		get_piece(t_info *m);
 //filler.c
 //play, iteration on map, write position
 int		write_piece_position(int x, int y);
-int		map_iterate(t_info *m, t_play *p);
-int		play(t_info *m, t_play *p);
+int		map_iterate(t_info *m, t_play *p, int fd);
+int		play(t_info *m, t_play *p, int fd);
 
 //check.c
 // check if we can place piece

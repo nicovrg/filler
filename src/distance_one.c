@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/17 16:28:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/18 01:15:17 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		is_inmap(int x, int y, t_info *m)
 
 int		compare_distance(int distance, t_play *p)
 {
-	if (p->distance < p->best_distance)
+	if (distance <= p->best_distance)
 	{
 		p->best_distance = distance;
 		p->map_fin_x = p->map_x;
