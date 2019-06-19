@@ -1,5 +1,6 @@
-seed = 6802
+seed = 384
 O: error on input
+../nivergne.filler: Segfault at 5
 players/abanlin.filler won
 Score:
-1AGAINST141
+5AGAINST144

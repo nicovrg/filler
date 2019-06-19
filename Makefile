@@ -6,14 +6,14 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/06/17 16:31:50 by nivergne         ###   ########.fr        #
+#    Updated: 2019/06/19 02:01:38 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = nivergne.filler
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 # -g3 -fsanitize=address
 
 LIBFT = -L ./libft/ -I ./libft/include -lft

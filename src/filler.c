@@ -6,32 +6,35 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/18 01:25:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/19 00:31:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "filler.h"
 
-// int		write_piece_position(int x, int y, int fd)
-// {
-// 	// write(fd, "YYYY=\n", 6);
-// 	ft_putnbr_fd(y, fd);
-// 	write(fd, " ", 1);
-// 	// write(fd, "XXXX=\n", 6);
-// 	ft_putnbr_fd(x, fd);
-// 	write(fd, "\n", 1);
-// 	return (1);
-// }
-
-int		write_piece_position(int x, int y)
+int		write_piece_position(int x, int y, int fd)
 {
 	ft_putnbr(y);
 	write(1, " ", 1);
 	ft_putnbr(x);
 	write(1, "\n", 1);
+
+	ft_putnbr_fd(y, fd);
+	write(fd, " ", 1);
+	ft_putnbr_fd(x, fd);
+	write(fd, "\n", 1);
 	return (1);
 }
+
+// int		write_piece_position(int x, int y)
+// {
+// 	ft_putnbr(y);
+// 	write(1, " ", 1);
+// 	ft_putnbr(x);
+// 	write(1, "\n", 1);
+// 	return (1);
+// }
 
 int		map_iterate(t_info *m, t_play *p, __unused int fd)
 {
@@ -66,7 +69,7 @@ int		play(t_info *m, t_play *p, int fd)
 	if (!map_iterate(m, p, fd))
 		return (ft_error("no place found for piece on map"));
 	// write(fd, "PLAY1\n", 6);
-	write_piece_position(p->map_fin_x, p->map_fin_y);
+	write_piece_position(p->map_fin_x, p->map_fin_y, fd);
 	// write(fd, "PLAY2\n", 6);
 	if (p->map_fin_x == 0 && p->map_fin_y == 0)
 		return (0);

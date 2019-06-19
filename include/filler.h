@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/18 01:25:05 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/19 01:34:55 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		set_rest(t_info *m, t_play *p);
 int		allocate_map(t_info *m);
 int		check_map_line(char *line, t_info *m);
 int		fill_map(t_info *m);
+int		fill_map2(t_info *m);
 
 //piece.c
 //get dimensions, allocate the piece, check if it's valid, fill it
@@ -74,7 +75,7 @@ int		get_piece(t_info *m);
 
 //filler.c
 //play, iteration on map, write position
-int		write_piece_position(int x, int y);
+int		write_piece_position(int x, int y, int fd);
 int		map_iterate(t_info *m, t_play *p, int fd);
 int		play(t_info *m, t_play *p, int fd);
 
