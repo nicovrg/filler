@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:53:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/18 00:55:04 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/19 06:34:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ int		check_ally(t_info *m, t_play *p)
 
 	x = p->map_x + p->piece_x;
 	y = p->map_y + p->piece_y;
-	if (m->map[y][x] == m->player_id && m->piece[p->piece_y][p->piece_x] == '*')
+	if (y < m->map_height && x < m->map_width && p->piece_y < m->piece_height && m->piece_width)
 	{
-		if (p->link == 0)
+		if (m->map[y][x] == m->player_id && m->piece[p->piece_y][p->piece_x] == '*')
 		{
-			p->link++;
-			return (1);
+			if (p->link == 0)
+			{
+				p->link++;
+				return (1);
+			}
+			return (0);
 		}
-		return (0);
 	}
 	return (1);
 }
@@ -39,8 +42,11 @@ int		check_enemy(t_info *m, t_play *p)
 
 	x = p->map_x + p->piece_x;
 	y = p->map_y + p->piece_y;
-	if (m->map[y][x] == m->enemy_id && m->piece[p->piece_y][p->piece_x] == '*')
-		return (1);
+	if (y < m->map_height && x < m->map_width)
+	{
+		if (m->map[y][x] == m->enemy_id && m->piece[p->piece_y][p->piece_x] == '*')
+			return (1);
+	}
 	return (0);
 }
 

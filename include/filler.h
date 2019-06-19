@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/19 01:34:55 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/19 05:04:55 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,7 @@ int		check_limit_two(int i, int j, t_info *m, t_play *p);
 int		compare_distance(int distance, t_play *p);
 int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);
+
+#include <stdio.h>
 
 #endif

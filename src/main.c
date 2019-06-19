@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/19 01:34:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/19 03:56:43 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ int		main(void)
 			return (ft_error("problem in init_round\n"));
 		if (i == 0)
 		{
+			// write(1, "1\n", 2);
 			if (!fill_map(&m))
 				return (ft_error_free_tab(&m, "problem in fill_map\n"));
 		}
-		else
+		if (i > 0)
 		{
+			// write(1, "2\n", 2);
 			if (!fill_map2(&m))
-				return (ft_error_free_tab(&m, "problem in fill_map\n"));
+				return (ft_error_free_tab(&m, "problem in fill_map2\n"));
 		}
+		// write(1, "3\n", 2);
 		if (!get_piece(&m))
 			return (ft_error_free_tab(&m, "problem in get_piece\n"));
 		// ft_check_parse(&m, &p);
@@ -94,6 +97,9 @@ int		main(void)
 			break ;
 		p.round++;
 		ft_free_tab(m.piece);
+		// write(1, "i = ", 4);
+		// ft_putnbr(i);
+		// write(1, "\n", 1);
 		i++;
 	}
 	ft_free_tab(m.map);

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/11 19:13:13 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/19 03:09:28 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ int		get_piece(t_info *m)
 	if (get_next_line(0, &line) > 0)
 	{
 		if (ft_strncmp(line, "Piece ", 5))
-			return (ft_error_free(&line, "Invalid syntaxe for \"Piece\""));
+			return (ft_error_free(&line, line));
+			// return (ft_error_free(&line, "Invalid syntaxe for Piece"));
 		if (!((m->piece_height = ft_atoi(line + i)) != 0))
 			return (ft_error_free(&line, "Invalid piece height"));
 		while (line[i] && ft_isdigit(line[i]))
@@ -114,6 +115,7 @@ int		get_piece(t_info *m)
 	else
 		return (0);
 	if (!allocate_piece(m) || !fill_piece(m) || !get_piece_start(m))
-		return (ft_error("problem in get_piece"));
+		return (ft_error(line));
+		// return (ft_error("problem in get_piece"));
 	return (1);
 }
