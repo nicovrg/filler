@@ -1,0 +1,5 @@
+1- verifier les leaks
+2- ajouter des verifs dans get_player_id pour ce qu'il y a après le numéro du joueur
+3- ajouter des verifs dans get_map_dimension (ft_strncmp)
+4- checker le sujet de la correction
+5- clean filler.h remove <stdio.h>

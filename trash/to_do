@@ -1,4 +1,0 @@
-verifier les leaks
-est ce que les free dans allocate map se font bien? (if m->map free map, if m->piece free piece)
-ajouter des verifs dans get_player_id pour ce qu'il y a après le numéro du joueur
-ajouter des verifs dans get_map_dimension (ft_strncmp)

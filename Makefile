@@ -6,15 +6,14 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/06/20 04:43:32 by nivergne         ###   ########.fr        #
+#    Updated: 2019/06/20 07:48:58 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = nivergne.filler
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-# -g3 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 
 LIBFT = -L ./libft/ -I ./libft/include -lft
 LIBFTOBJ = -I ./libft/include
@@ -71,8 +70,7 @@ SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILLER))
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
-all: libft $(NAME)
-#logo
+all: libft logo $(NAME)
 
 $(NAME): $(INC) $(OBJ)
 	@$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)
@@ -83,10 +81,7 @@ libft:
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-#	@echo "\033[38;2;0;255;0m[cc]\033[0m: $< -> $@"
-#	@printf "\e[1A"	
 	@$(CC) $(FLAGS) $(INCLUDE) $(LIBFTOBJ) -c $< -o $@
-#	@printf "\e[0K"
 
 clean:
 	@$(MAKE) -C libft/ clean

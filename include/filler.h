@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 05:14:39 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/20 07:49:17 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct	s_fillmap
 	int			j;
 	int			map_height;
 }				t_fillmap;
-
 
 #include <stdio.h>
 //main.c
