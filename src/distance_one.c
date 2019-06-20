@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/18 01:15:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/20 05:14:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,21 @@ int		compare_distance(int distance, t_play *p)
 int		echo(int test, t_info *m, t_play *p)
 {
 	int	i;
+	int	x;
+	int	y;
 
 	i = 0;
 	while (test > 0)
 	{
-		if (is_inmap(p->map_x + i, p->map_y - test, m) && m->map[p->map_x + i][p->map_y - test] == m->enemy_id)
+		x = p->map_x;
+		y = p->map_y;
+		if (is_inmap(x + i, y - test, m) && m->map[x + i][y - test] == m->e_id)
 			return (test);
-		if (is_inmap(p->map_x + test, p->map_y + i, m) && m->map[p->map_x + test][p->map_y + i] == m->enemy_id)
+		if (is_inmap(x + test, y + i, m) && m->map[x + test][y + i] == m->e_id)
 			return (test);
-		if (is_inmap(p->map_x - i, p->map_y + test, m) && m->map[p->map_x - i][p->map_y + test] == m->enemy_id)
+		if (is_inmap(x - i, y + test, m) && m->map[x - i][y + test] == m->e_id)
 			return (test);
-		if (is_inmap(p->map_x - test, p->map_y - i, m) && m->map[p->map_x - test][p->map_y - i] == m->enemy_id)
+		if (is_inmap(x - test, y - i, m) && m->map[x - test][y - i] == m->e_id)
 			return (test);
 		test--;
 		i++;

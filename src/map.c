@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/19 05:36:04 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/20 05:17:15 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		allocate_map(t_info *m)
 		return (0);
 	while (i < m->map_height)
 	{
-		if (!(m->map[i] = (char *)ft_memalloc(sizeof(char) * (m->map_width + 1))))
+		if (!(m->map[i] = (char *)ft_memalloc(m->map_width + 1)))
 			return (0);
 		i++;
 	}
@@ -52,67 +52,46 @@ int		check_map_line(char *line, t_info *m)
 	return (1);
 }
 
-int		fill_map(t_info *m)
+int		remove_line(char *line)
 {
-	int		i;
-	int		j;
-	int		map_height;
-	char	*line;
-
-	i = 0;
-	j = 0;
-	map_height = 0;
-	line = NULL;
 	if (get_next_line(0, &line) <= 0)
 		return (ft_error_free(&line, "can't read map in fill_map\n"));
 	ft_strdel(&line);
-	while (map_height < m->map_height)
-	{
-		if (get_next_line(0, &line) <= 0)
-			return (ft_error_free(&line, "can't read map in fill_map\n"));
-		while (line[i] && ft_isdigit_space(line[i]) == 1)
-			i++;
-		if (!check_map_line(line + i, m))
-			return (ft_error_free(&line, line));
-		m->map[j] = ft_strcpy(m->map[j], line + i);
-		ft_strdel(&line);
-		map_height++;
-		j++;
-	}
-	m->map[j] = 0;
-	return (1);
+	return (0);
 }
 
-int		fill_map2(t_info *m)
+int		init_fillmap(t_fillmap *f)
 {
-	int		i;
-	int		j;
-	int		map_height;
-	char	*line;
+	f->i = 0;
+	f->line = NULL;
+	f->j = 0;
+	f->map_height = 0;
+	return (0);
+}
 
-	i = 0;
-	j = 0;
-	map_height = 0;
-	line = NULL;
-	if (get_next_line(0, &line) <= 0)
-		return (ft_error_free(&line, "can't read map in fill_map\n"));
-	ft_strdel(&line);
-	if (get_next_line(0, &line) <= 0)
-		return (ft_error_free(&line, "can't read map in fill_map\n"));
-	ft_strdel(&line);
-	while (map_height < m->map_height)
+int		fill_map(t_info *m, t_play *p)
+{
+	t_fillmap	f;
+
+	init_fillmap(&f);
+	if (p->round != 0)
+		remove_line((f.line));
+	if (get_next_line(0, &f.line) <= 0)
+		return (ft_error_free(&f.line, "can't read map in fill_map\n"));
+	ft_strdel(&f.line);
+	while (f.map_height < m->map_height)
 	{
-		if (get_next_line(0, &line) <= 0)
-			return (ft_error_free(&line, "can't read map in fill_map\n"));
-		while (line[i] && ft_isdigit_space(line[i]) == 1)
-			i++;
-		if (!check_map_line(line + i, m))
-			return (ft_error_free(&line, line));
-		m->map[j] = ft_strcpy(m->map[j], line + i);
-		ft_strdel(&line);
-		map_height++;
-		j++;
+		if (get_next_line(0, &f.line) <= 0)
+			return (ft_error_free(&f.line, "can't read map in fill_map\n"));
+		while (f.line[f.i] && ft_isdigit_space(f.line[f.i]) == 1)
+			f.i++;
+		if (!check_map_line(f.line + f.i, m))
+			return (ft_error_free(&f.line, f.line));
+		m->map[f.j] = ft_strcpy(m->map[f.j], f.line + f.i);
+		ft_strdel(&f.line);
+		f.map_height++;
+		f.j++;
 	}
-	m->map[j] = 0;
+	m->map[f.j] = 0;
 	return (1);
 }

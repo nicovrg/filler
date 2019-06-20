@@ -1,0 +1,96 @@
+// ft_check_parse(&m, &p);
+int		ft_check_parse(t_info *m, t_play *p)
+{
+	printf("m->player_id = %c\n", m->player_id);
+	printf("m->e_id = %c\n", m->e_id);
+	printf("\n");
+	printf("m->map_height = %d\n", m->map_height);
+	printf("m->map_width = %d\n", m->map_width);
+	printf("\n");
+	printf("m->piece_height = %d\n", m->piece_height);
+	printf("m->piece_width = %d\n", m->piece_width);
+	printf("\n");	
+	printf("m->piece_first_x = %d\n", m->piece_first_x);
+	printf("m->piece_first_y = %d\n", m->piece_first_y);
+	printf("\n");
+	printf("p->round = %d\n", p->round);
+	printf("\n");	
+	printf("p->map_x = %d\n", p->map_x);
+	printf("p->map_y = %d\n", p->map_y);
+	printf("\n");	
+	printf("p->piece_x = %d\n", p->piece_x);
+	printf("p->piece_y = %d\n", p->piece_y);
+	printf("\n");
+	printf("p->piece_x = %d\n", p->piece_x);
+	printf("p->piece_y = %d\n", p->piece_y);
+	printf("\n");
+	printf("p->map_fin_x = %d\n", p->map_fin_x);
+	printf("p->map_fin_y = %d\n", p->map_fin_y);
+	printf("\n");
+	printf("p->best_distance = %d\n", p->best_distance);
+	return (1);
+}
+
+int		write_piece_position(int x, int y, int fd)
+{
+	ft_putnbr(y);
+	write(1, " ", 1);
+	ft_putnbr(x);
+	write(1, "\n", 1);
+
+	ft_putnbr_fd(y, fd);
+	write(fd, " ", 1);
+	ft_putnbr_fd(x, fd);
+	write(fd, "\n", 1);
+	return (1);
+}
+
+check_piece_fit - check_ally
+	// printf("coucou\n");
+	// printf("y = %d\tx = %d\tp->piece_y = %d\tp->piece_x = %d\tm->map_height = %d\tm->map_width = %d\tm->piece_height = %d\tm->piece_width = %d\n", y, x, p->piece_y, p->piece_x, m->map_height, m->map_width, m->piece_height, m->piece_width);
+	// printf("y = %d\tx = %d\tm->map[y][x] = %c\tm->piece[p->piece_y][p->piece_x] = %c\tp->piece_y = %d\tp->piece_x = %d\n", y, x, m->map[y][x], m->piece[p->piece_y][p->piece_x], p->piece_y, p->piece_x);
+
+init - get_player_id 
+	printf("line = %s\n", line);
+	printf("%d\n", ft_strncmp(line, "$$$ exec p", 10));
+	printf("line = %c\n", line[11]);
+
+init - check_player_name
+	if (!check_player_name(line))
+		return (ft_error_free(&line, "player name is invalid\n"));
+
+	int		check_player_name(char *line)
+	{
+		int check;
+
+		check = 0;
+		if (!ft_strncmp(line + 14, "nivergne.filler", 15))
+			check = 1;
+		else if (!ft_strncmp(line + 14, "hcao.filler", 11))
+			check = 1;
+		else if (!ft_strncmp(line + 14, "carli.filler", 12))
+			check = 1;
+		else if (!ft_strncmp(line + 14, "grati.filler", 12))
+			check = 1;
+		else if (!ft_strncmp(line + 14, "abanlin.filler", 14))
+			check = 1;
+		else if (!ft_strncmp(line + 14, "champely.filler", 15))
+			check = 1;
+		else if (!ft_strncmp(line + 14, "superjeannot.filler", 19))
+			check = 1;
+		if (check == 0)
+			return (0);
+		return (1);
+	}
+
+filler - play
+	printf("p->map_fin_x = %d\np->map_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
+
+filler - map_iterate
+	printf("m->piece_height = %d\nm->piece_width = %d\n", m->piece_height, m->piece_width);
+	printf("p->map_y = %d\np->map_x = %d\n", p->map_y, p->map_x);
+	printf("call get_dist_one%d\np->map_y = %d\np->map_x = %d\n", i, p->map_y, p->map_x);
+	printf("fin\n");
+
+distance_one - compare_distance
+	printf("distance = %d\tp->map_y = %d\tp->map_x = %d\n", distance, p->map_y, p->map_x);

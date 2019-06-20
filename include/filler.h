@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/19 05:04:55 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/20 05:14:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct	s_info 
 {
-	char	player_id;
-	char	enemy_id;
+	char	p_id;
+	char	e_id;
 	int		map_width;
 	int		map_height;
 	int		piece_width;
@@ -40,30 +40,39 @@ typedef struct	s_play
 	int		best_distance;
 }				t_play;
 
+typedef struct	s_fillmap 
+{
+	int			i;
+	char		*line;
+	int			j;
+	int			map_height;
+}				t_fillmap;
+
+
+#include <stdio.h>
 //main.c
 //for the moment, contain basics functions that could be added to libft
 int		ft_isdigit_space(int c);
-int		ft_free_tab(char **tab);
-int		ft_error(char *error_msg);
-int		ft_error_free(char **line, char *error_msg);
-int		ft_check_parse(t_info *m, t_play *p);
 
 //init.c
 //get static information about the game: player_id, map_dimensions 
 int		init_struct(t_info *m, t_play *p);
 int		check_player_name(char *line);
-int		set_player_id(t_info *m, int ret);
-int		get_player_id(t_info *m);
 int		get_map_dimensions(t_info *m);
 int		init_round(t_play *p);
 int		set_rest(t_info *m, t_play *p);
+
+//player_id
+int		set_player_id(t_info *m, int ret);
+int		get_player_id(t_info *m);;
 
 //map.c
 //allocate the map, check if lines are valid, fill the **map
 int		allocate_map(t_info *m);
 int		check_map_line(char *line, t_info *m);
-int		fill_map(t_info *m);
-int		fill_map2(t_info *m);
+int 	remove_line(char *line);
+int		init_fillmap(t_fillmap *f);
+int		fill_map(t_info *m, t_play *p);
 
 //piece.c
 //get dimensions, allocate the piece, check if it's valid, fill it
@@ -75,12 +84,13 @@ int		get_piece(t_info *m);
 
 //filler.c
 //play, iteration on map, write position
-int		write_piece_position(int x, int y, int fd);
-int		map_iterate(t_info *m, t_play *p, int fd);
-int		play(t_info *m, t_play *p, int fd);
+int		write_piece_position(int x, int y);
+int		map_iterate(t_info *m, t_play *p);
+int		play(t_info *m, t_play *p);
 
 //check.c
 // check if we can place piece
+int		check_inmap(int x, int y, t_info *m, t_play *p);
 int		check_place(t_info *m, t_play *p);
 int		check_ally(t_info *m, t_play *p);
 int		check_enemy(t_info *m, t_play *p);
@@ -93,6 +103,11 @@ int		compare_distance(int distance, t_play *p);
 int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);
 
-#include <stdio.h>
+//error.c
+int		ft_free_tab(char **tab);
+int		ft_error(char *error_msg);
+int		ft_error_free(char **line, char *error_msg);
+int		ft_error_free_tab(t_info *m, char *error_msg);
+int		ft_check_parse(t_info *m, t_play *p);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/06/19 02:01:38 by nivergne         ###   ########.fr        #
+#    Updated: 2019/06/20 04:43:32 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,13 @@ OBJ_PATH = 	./obj
 
 SRC_FILLER =				main.c\
 							init.c\
+							player_id.c\
 							map.c\
 							piece.c\
 							filler.c\
 							check_piece_fit.c\
-							distance_one.c
+							distance_one.c\
+							error.c
 
 UNDER	=					\x1b[4m
 BOLD	=					\x1b[1m

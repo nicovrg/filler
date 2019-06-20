@@ -1,4 +1,3 @@
-$$$ exec p1
 Plateau 15 17:
     01234567890123456
 000 XXXXXXXXxx.......
@@ -230,54 +229,3 @@ Piece 2 2
 *****OOO*****
 ******O******
 *************
-
-
-ajouter des verifs dans get_player_id pour ce qu'il y a après le numéro du joueur
-ajouter des verifs dans get_map_dimension (ft_strncmp)
-est ce que les free dans allocate map se font bien? (if m->map free map, if m->piece free piece)
-
-
-init - get player id 
-	printf("line = %s\n", line);
-	printf("%d\n", ft_strncmp(line, "$$$ exec p", 10));
-	printf("line = %c\n", line[11]);
-
-init - check_player_name
-	if (!check_player_name(line))
-		return (ft_error_free(&line, "player name is invalid\n"));
-
-	int		check_player_name(char *line)
-	{
-		int check;
-
-		check = 0;
-		if (!ft_strncmp(line + 14, "nivergne.filler", 15))
-			check = 1;
-		else if (!ft_strncmp(line + 14, "hcao.filler", 11))
-			check = 1;
-		else if (!ft_strncmp(line + 14, "carli.filler", 12))
-			check = 1;
-		else if (!ft_strncmp(line + 14, "grati.filler", 12))
-			check = 1;
-		else if (!ft_strncmp(line + 14, "abanlin.filler", 14))
-			check = 1;
-		else if (!ft_strncmp(line + 14, "champely.filler", 15))
-			check = 1;
-		else if (!ft_strncmp(line + 14, "superjeannot.filler", 19))
-			check = 1;
-		if (check == 0)
-			return (0);
-		return (1);
-	}
-
-filler - play
-	printf("p->map_fin_x = %d\np->map_fin_y = %d\n", p->map_fin_x, p->map_fin_y);
-
-filler - map_iterate
-	printf("m->piece_height = %d\nm->piece_width = %d\n", m->piece_height, m->piece_width);
-	printf("p->map_y = %d\np->map_x = %d\n", p->map_y, p->map_x);
-	printf("call get_dist_one%d\np->map_y = %d\np->map_x = %d\n", i, p->map_y, p->map_x);
-	printf("fin\n");
-
-distance_one - compare_distance
-	printf("distance = %d\tp->map_y = %d\tp->map_x = %d\n", distance, p->map_y, p->map_x);
