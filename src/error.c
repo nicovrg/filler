@@ -6,26 +6,26 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 04:43:46 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 04:49:55 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/27 06:40:15 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "filler.h"
 
-int		ft_free_tab(char **tab)
+int		ft_free_tab(char ***tab)
 {
 	int i;
 
 	i = 0;
-	if (!tab)
+	if (!*tab)
 		return (0);
-	while (tab[i] != 0)
+	while ((*tab)[i] != NULL)
 	{
-		ft_strdel(&tab[i]);
+		ft_strdel(&(*tab)[i]);
 		i++;
 	}
-	ft_memdel((void *)&tab);
+	ft_memdel((void *)tab);
 	return (1);
 }
 
@@ -46,8 +46,8 @@ int		ft_error_free_tab(t_info *m, char *error_msg)
 {
 	ft_putendl_fd(error_msg, 2);
 	if (m->map)
-		ft_free_tab(m->map);
+		ft_free_tab(&m->map);
 	if (m->piece)
-		ft_free_tab(m->piece);
+		ft_free_tab(&m->piece);
 	return (0);
 }

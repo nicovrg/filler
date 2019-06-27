@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 07:49:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/27 06:37:57 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);
 
 //error.c
-int		ft_free_tab(char **tab);
+int		ft_free_tab(char ***tab);
 int		ft_error(char *error_msg);
 int		ft_error_free(char **line, char *error_msg);
 int		ft_error_free_tab(t_info *m, char *error_msg);

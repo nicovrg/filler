@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 05:17:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/27 06:39:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		allocate_map(t_info *m)
 			return (0);
 		i++;
 	}
-	m->map[i] = 0;
+	m->map[i] = NULL;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 05:10:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/27 06:38:26 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int		main(void)
 		if (!play(&m, &p))
 			break ;
 		p.round++;
-		ft_free_tab(m.piece);
+		ft_free_tab(&m.piece);
 	}
-	ft_free_tab(m.map);
+	ft_free_tab(&m.map);
 	return (0);
 }
