@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 21:23:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 02:19:38 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:55:08 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int		write_piece_position(int x, int y)
 {
 	ft_putnbr(y);
-	write(1, " ", 1);
+	write (1, " ", 1);
 	ft_putnbr(x);
-	write(1, "\n", 1);
-	return (1);
+	write (1, "\n", 1);
+	return (0);
 }
 
 int		map_iterate(t_info *m, t_play *p)
@@ -40,7 +40,7 @@ int		map_iterate(t_info *m, t_play *p)
 }
 
 int		play(t_info *m, t_play *p)
-{
+{	
 	if (!map_iterate(m, p))
 		return (ft_error("no place found for piece on map"));
 	write_piece_position(p->map_fin_x, p->map_fin_y);

@@ -6,14 +6,14 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/06/20 07:48:58 by nivergne         ###   ########.fr        #
+#    Updated: 2019/07/02 22:23:35 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = nivergne.filler
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFT = -L ./libft/ -I ./libft/include -lft
 LIBFTOBJ = -I ./libft/include
@@ -70,7 +70,8 @@ SRC = $(addprefix $(SRC_PATH)/, $(SRC_FILLER))
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 
-all: libft logo $(NAME)
+all: libft $(NAME)
+#logo
 
 $(NAME): $(INC) $(OBJ)
 	@$(CC) $(FLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)

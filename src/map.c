@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 05:17:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:57:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		allocate_map(t_info *m)
 			return (0);
 		i++;
 	}
-	m->map[i] = 0;
+	m->map[i] = NULL;
 	return (1);
 }
 
@@ -52,11 +52,11 @@ int		check_map_line(char *line, t_info *m)
 	return (1);
 }
 
-int		remove_line(char *line)
+int		remove_line(char **line)
 {
-	if (get_next_line(0, &line) <= 0)
-		return (ft_error_free(&line, "can't read map in fill_map\n"));
-	ft_strdel(&line);
+	if (get_next_line(0, line) <= 0)
+		return (ft_error_free(line, "can't read map in fill_map\n"));
+	ft_strdel(line);
 	return (0);
 }
 
@@ -75,7 +75,7 @@ int		fill_map(t_info *m, t_play *p)
 
 	init_fillmap(&f);
 	if (p->round != 0)
-		remove_line((f.line));
+		remove_line((&f.line));
 	if (get_next_line(0, &f.line) <= 0)
 		return (ft_error_free(&f.line, "can't read map in fill_map\n"));
 	ft_strdel(&f.line);

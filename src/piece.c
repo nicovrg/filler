@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 05:18:08 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/02 22:24:32 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int		allocate_piece(t_info *m)
 	int i;
 
 	i = 0;
-	if (!(m->piece = (char **)malloc(sizeof(char *) * (m->piece_height + 1))))
+	if (!(m->piece = (char **)ft_memalloc(sizeof(char *) * (m->piece_height + 1))))
 		return (0);
 	while (i < m->piece_height)
 	{
-		if (!(m->piece[i] = (char *)malloc(m->piece_width + 1)))
+		if (!(m->piece[i] = (char *)ft_memalloc(m->piece_width + 1)))
 			return (0);
 		i++;
 	}
-	m->piece[i] = 0;
+	m->piece[i] = NULL;
 	return (1);
 }
 

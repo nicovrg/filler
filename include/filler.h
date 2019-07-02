@@ -6,12 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 07:49:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/06/27 06:14:47 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FILLER_H
-# define _FILLER_H
+#ifndef FILLER_H
+# define FILLER_H
 
 typedef struct	s_info 
 {
@@ -69,7 +69,7 @@ int		get_player_id(t_info *m);;
 //allocate the map, check if lines are valid, fill the **map
 int		allocate_map(t_info *m);
 int		check_map_line(char *line, t_info *m);
-int 	remove_line(char *line);
+int 	remove_line(char **line);
 int		init_fillmap(t_fillmap *f);
 int		fill_map(t_info *m, t_play *p);
 
@@ -103,7 +103,7 @@ int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);
 
 //error.c
-int		ft_free_tab(char **tab);
+int		ft_free_tab(char ***tab);
 int		ft_error(char *error_msg);
 int		ft_error_free(char **line, char *error_msg);
 int		ft_error_free_tab(t_info *m, char *error_msg);
