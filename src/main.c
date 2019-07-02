@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/28 01:35:05 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/02 23:07:08 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ int		main(void)
 {
 	t_info	m;
 	t_play	p;
-
-	int fd = 0;
-	if (!(fd = open("test", O_WRONLY | O_APPEND)))
-	{
-		ft_putstr_fd("can not open file\n", fd);
-		return (0);
-	}
 
 	if (!init_struct(&m, &p))
 		return (ft_error("problem in init_struct\n"));
@@ -50,6 +43,5 @@ int		main(void)
 		ft_free_tab(&m.piece);
 	}
 	ft_free_tab(&m.map);
-	close(fd);
 	return (0);
 }
