@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:48:53 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/05 07:15:40 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 07:51:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,16 @@ int		is_inmap(int y, int x, t_info *m)
 
 int		compare_distance(int distance, t_play *p)
 {
-	int fd = 0;
-	if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
-	{
-		ft_putstr("cant open file\n");
-		return (0);
-	}
-
 	if (distance <= p->best_distance)
 	{
-		dprintf(fd, "COMPARE_DISTANCE -\tbefore: distance = %d map_fin_y = %d map_fin_x = %d end = %d\n", distance, p->map_fin_y, p->map_fin_x, p->end);
 		if (p->map_x >= 0 && p->map_y >= 0)
 		{
 			p->best_distance = distance;
 			p->map_fin_x = p->map_x;
 			p->map_fin_y = p->map_y;
-			dprintf(fd, "COMPARE_DISTANCE -\tafter: distance = %d map_fin_y = %d map_fin_x = %d\n", distance, p->map_fin_y, p->map_fin_x);
 			return (1);
 		}
 	}
-	close(fd);
 	return (0);
 }
 

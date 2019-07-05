@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 02:53:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/05 07:39:03 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 07:51:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,6 @@ int		check_limit(t_info *m, t_play *p)
 
 int		check_place(t_info *m, t_play *p)
 {
-	int fd = 0;
-	if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
-	{
-		ft_putstr("cant open file\n");
-		return (0);
-	}
 	p->link = 0;
 	p->piece_y = 0;
 	while (p->piece_y < m->piece_height)
@@ -99,7 +93,5 @@ int		check_place(t_info *m, t_play *p)
 		}
 		p->piece_y++;
 	}
-	dprintf(fd, "END CHECK_PLACE - p->link = %d\n", p->link);
-	close(fd);
 	return (p->link);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/05 07:26:21 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 09:13:27 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,17 @@ int		ft_isdigit_space(int c)
 	return (0);
 }
 
-/*
 void __attribute__((destructor)) end();
 void    end(void)
 {
 	while(1);
 }
-*/
 
 int		main(void)
 {
 	t_info	m;
 	t_play	p;
 
-	int fd = 0;
-	if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
-	{
-		ft_putstr("main - cant open file\n");
-		return (0);
-	}
 	if (!init_struct(&m, &p))
 		return (ft_error("main - error in init_struct\n"));
 	if (!allocate_map(&m))
@@ -53,17 +45,12 @@ int		main(void)
 			return (ft_error_free_tab(&m, "main - error in get_piece\n"));
 		if (!play(&m, &p))
 		{
-			ft_putstr_fd("BREAK IN PLAY\n", fd);
 			ft_free_tab(&m.piece);
 			break ;
 		}
-		ft_putstr_fd("ROUND = ", fd);
-		ft_putnbr_fd(p.round, fd);
-		ft_putstr_fd("\n", fd);
 		p.round++;
 		ft_free_tab(&m.piece);
 	}
 	ft_free_tab(&m.map);
-	close(fd);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/21 16:02:56 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/05 02:29:12 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 09:10:32 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		allocate_piece(t_info *m)
 	int i;
 
 	i = 0;
-	if (!(m->piece = (char **)ft_memalloc(sizeof(char *) * (m->piece_height + 1))))
+	if (!(m->piece = (char **)ft_memalloc(8 * (m->piece_height + 1))))
 		return (0);
 	while (i < m->piece_height)
 	{
@@ -48,13 +48,6 @@ int		check_piece_line(char *line, t_info *m)
 
 int		fill_piece(t_info *m)
 {
-	// int fd = 0;
-	// if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
-	// {
-	// 	ft_putstr("cant open file\n");
-	// 	return (0);
-	// }
-
 	int		i;
 	char	*line;
 
@@ -64,7 +57,6 @@ int		fill_piece(t_info *m)
 	{
 		if (get_next_line(0, &line) <= 0)
 			return (ft_error("problem in fill piece"));
-		// ft_putendl_fd(line, fd);
 		if (!check_piece_line(line, m))
 			return (0);
 		m->piece[i] = ft_strcpy(m->piece[i], line);
@@ -72,11 +64,7 @@ int		fill_piece(t_info *m)
 		i++;
 	}
 	if (i != m->piece_height)
-	// {
-	// 	close(fd);
 		return (0);
-	// }
-	// close(fd);
 	return (1);
 }
 
