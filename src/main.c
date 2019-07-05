@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/05 09:13:27 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 11:04:04 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int		ft_isdigit_space(int c)
 	return (0);
 }
 
-void __attribute__((destructor)) end();
-void    end(void)
-{
-	while(1);
-}
+// void __attribute__((destructor)) end();
+// void    end(void)
+// {
+// 	while(1);
+// }
 
 int		main(void)
 {

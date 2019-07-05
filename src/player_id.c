@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/20 04:39:30 by nivergne          #+#    #+#             */
-/*   Updated: 2019/06/20 05:15:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 10:04:15 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,18 @@ int		get_player_id(t_info *m)
 	if (get_next_line(0, &line) <= 0)
 		return (ft_error("fail to read the first line\n"));
 	if (ft_strncmp(line, "$$$ exec p", 10) != 0)
-		return (ft_error_free(&line, "player format is invalid\n"));
+		return (ft_error_free(&line, "player format 0 is invalid\n"));
 	while (!ft_isdigit(line[i]))
 		i++;
 	ret = ft_atoi(line + i);
 	if (!set_player_id(m, ret))
 		return (ft_error_free(&line, "player number is invalid\n"));
+	if (ft_strncmp(line + i + 1, " : [", 3))
+		return (ft_error_free(&line, "player format start is invalid\n"));
+	while (line[i])
+		i++;
+	if (ft_strcmp(line + i - 1, "]"))
+		return (ft_error_free(&line, "player format end is invalid\n"));
 	ft_strdel(&line);
 	return (1);
 }
