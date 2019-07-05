@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/02 23:07:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 04:14:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_play
 	int		map_fin_x;
 	int		map_fin_y;
 	int		link;
+	int		end;
 	int		best_distance;
 }				t_play;
 
@@ -97,7 +98,7 @@ int		check_limit(t_info *m, t_play *p);
 
 //distance_one.c
 // check distance from player piece vs opponent piece
-int		check_limit_two(int i, int j, t_info *m, t_play *p);
+int		is_inmap(int y, int x, t_info *m);
 int		compare_distance(int distance, t_play *p);
 int		echo(int test, t_info *m, t_play *p);
 int		get_distance(t_info *m, t_play *p);

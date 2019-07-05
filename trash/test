@@ -1,4 +1,4 @@
-CHAMPERLY -> ABALIN -> HCAO -> GRATI -> CARLI
+CHAMPERLY -> ABALIN -> HCAO -> GRATI -> CARLI -> SUPERJEANNOT
 
 int fd = 0;
 if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
@@ -15,32 +15,154 @@ CALER LES INDEX MAP EN - PIECE
 
 
 
-
+$$$ exec p1
+Plateau 15 17:
     01234567890123456
-000 ..0.0............
-001 ...0.............
-002 0................
-003 00O...........O..
-004 0................
-005 ...........X.....
-006 .................
-007 .................
-008 .................
-009 ........X........
-010 .................
-011 .................
-012 .................
-013 ..O...........O..
-014 .................
-.**
+000 OOOOOOOOOO....O..
+001 OOOOOOOOOO..OOO..
+002 OOOOOOOOOO.OOOOOO
+003 OOOOOOOOOOOOOOOOO
+004 OOOOOOOOOOOOOOOOO
+005 OOOOOOOOOOOOOOOOO
+006 OOOOOOOOOOOOOOOOO
+007 OOOOOOOOOOOOOOOOO
+008 OOOOOOOOOOOOOOOOO
+009 OOOOOOOOOOOOOOOOO
+010 OOOOOOOOOOOOOOOOO
+011 OOOOOOOOOOOOOOOXX
+012 OOOOOOOOOOOXXXXXX
+013 OOOOOOOOOXXXXXXXX
+014 OOOOOOOOXXXXXXXXX
+Piece 2 2:
+**
+..
+
+int		echo(int test, t_info *m, t_play *p)
+{
+	// int fd = 0;
+	// if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
+	// {
+	// 	ft_putstr("cant open file\n");
+	// 	return (0);
+	// }
+	int	i;
+	int	x;
+	int	y;
+
+	i = 0;
+	while (test > 0)
+	{
+		x = p->map_x;
+		y = p->map_y;
+		// dprintf(fd, "TEST = %d-\t\ty = %d x = %d\t\ty = %d x = %d\t\ty = %d x = %d\t\ty = %d x = %d\n", test, x + i, y - test, x + test, y + i, x - i, y + test, x - test, y - i);
+		if (is_inmap(y - test, x + i, m) && m->map[y - test][x + i] == m->e_id)
+		// {
+			// dprintf(fd, "ECHO 1 -\t\ty = %d x = %d\n", x + i, y - test);
+			return (test);
+		// }
+		if (is_inmap(y + i, x + test, m) && m->map[y + i][x + test] == m->e_id)
+		// {
+			// dprintf(fd, "ECHO 2 -\t\ty = %d x = %d\n", x + test, y + i);
+			return (test);
+		// }
+		if (is_inmap(y + test, x - i, m) && m->map[y + test][x - i] == m->e_id)
+		// {
+			// dprintf(fd, "ECHO 3 -\t\ty = %d x = %d\n", x - i, y + test);
+			return (test);
+		// }
+		if (is_inmap(y - i, x - test, m) && m->map[y - i][x - test] == m->e_id)
+		// {
+			// dprintf(fd, "ECHO 4 -\t\ty = %d x = %d\n", x - test, y - i);
+			return (test);
+		// }
+		test--;
+		i++;
+	}
+	// close(fd);
+	return (0);
+}
 
 
 
 
+// coordonnes inverse avec fd
+// int		echo(int test, t_info *m, t_play *p)
+// {
+// 	int fd = 0;
+// 	if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
+// 	{
+// 		ft_putstr("cant open file\n");
+// 		return (0);
+// 	}
+// 	int	i;
+// 	int	x;
+// 	int	y;
 
+// 	i = 0;
+// 	while (test > 0)
+// 	{
+// 		x = p->map_x;
+// 		y = p->map_y;
+// 		dprintf(fd, "TEST = %d-\t\ty = %d x = %d\t\ty = %d x = %d\t\ty = %d x = %d\t\ty = %d x = %d\n", test, x + i, y - test, x + test, y + i, x - i, y + test, x - test, y - i);
+// 		if (is_inmap(x + i, y - test, m) && m->map[x + i][y - test] == m->e_id)
+// 		{
+// 			dprintf(fd, "ECHO 1 -\t\ty = %d x = %d\n", x + i, y - test);
+// 			return (test);
+// 		}
+// 		if (is_inmap(x + test, y + i, m) && m->map[x + test][y + i] == m->e_id)
+// 		{
+// 			dprintf(fd, "ECHO 2 -\t\ty = %d x = %d\n", x + test, y + i);
+// 			return (test);
+// 		}
+// 		if (is_inmap(x - i, y + test, m) && m->map[x - i][y + test] == m->e_id)
+// 		{
+// 			dprintf(fd, "ECHO 3 -\t\ty = %d x = %d\n", x - i, y + test);
+// 			return (test);
+// 		}
+// 		if (is_inmap(x - test, y - i, m) && m->map[x - test][y - i] == m->e_id)
+// 		{
+// 			dprintf(fd, "ECHO 4 -\t\ty = %d x = %d\n", x - test, y - i);
+// 			return (test);
+// 		}
+// 		test--;
+// 		i++;
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
 
+// coordonnes inverse
+// int		echo(int test, t_info *m, t_play *p)
+// {
+// 	int fd = 0;
+// 	if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
+// 	{
+// 		ft_putstr("cant open file\n");
+// 		return (0);
+// 	}
+// 	int	i;
+// 	int	x;
+// 	int	y;
 
-
+// 	i = 0;
+// 	while (test > 0)
+// 	{
+// 		x = p->map_x;
+// 		y = p->map_y;
+// 		if (is_inmap(x + i, y - test, m) && m->map[x + i][y - test] == m->e_id)
+// 			return (test);
+// 		if (is_inmap(x + test, y + i, m) && m->map[x + test][y + i] == m->e_id)
+// 			return (test);
+// 		if (is_inmap(x - i, y + test, m) && m->map[x - i][y + test] == m->e_id)
+// 			return (test);
+// 		if (is_inmap(x - test, y - i, m) && m->map[x - test][y - i] == m->e_id)
+// 			return (test);
+// 		test--;
+// 		i++;
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
 
 
 

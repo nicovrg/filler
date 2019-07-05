@@ -6,14 +6,14 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 14:13:10 by nivergne          #+#    #+#              #
-#    Updated: 2019/07/02 23:07:16 by nivergne         ###   ########.fr        #
+#    Updated: 2019/07/05 02:27:55 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = nivergne.filler
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 LIBFT = -L ./libft/ -I ./libft/include -lft
 LIBFTOBJ = -I ./libft/include

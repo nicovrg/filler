@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 22:21:25 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/03 02:59:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 07:20:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,27 @@ int		init_fillmap(t_fillmap *f)
 
 int		fill_map(t_info *m, t_play *p)
 {
-	int fd = 0;
-	if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
-	{
-		ft_putstr("cant open file\n");
-		return (0);
-	}
+	// int fd = 0;
+	// if (!(fd = open("test", O_WRONLY | O_APPEND | O_CREAT)))
+	// {
+	// 	ft_putstr("cant open file\n");
+	// 	return (0);
+	// }
 	t_fillmap	f;
 	init_fillmap(&f);
-	if (p->round != 0)
+	if (p->round != 0 && p->end != 1)
 		remove_line((&f.line));
 	if (get_next_line(0, &f.line) <= 0)
-	{
-		ft_putstr_fd("ERROR IN FILLMAP GNL\n", fd);
+	// {
+		// ft_putstr_fd("ERROR IN FILLMAP GNL\n", fd);
 		return (ft_error_free(&f.line, "gnl after remove_line error\n"));
-	}
+	// }
 	ft_strdel(&f.line);
 	while (f.map_height < m->map_height)
 	{
 		if (get_next_line(0, &f.line) <= 0)
 			return (ft_error_free(&f.line, "can't read map in fill_map\n"));
-		ft_putendl_fd(f.line, fd);
+		// ft_putendl_fd(f.line, fd);
 		while (f.line[f.i] && ft_isdigit_space(f.line[f.i]) == 1)
 			f.i++;
 		if (!check_map_line(f.line + f.i, m))
@@ -102,6 +102,6 @@ int		fill_map(t_info *m, t_play *p)
 		f.j++;
 	}
 	m->map[f.j] = 0;
-	close(fd);
+	// close(fd);
 	return (1);
 }

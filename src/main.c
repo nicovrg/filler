@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 14:13:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/03 02:52:26 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/05 07:26:21 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int		ft_isdigit_space(int c)
 		return (1);
 	return (0);
 }
+
+/*
+void __attribute__((destructor)) end();
+void    end(void)
+{
+	while(1);
+}
+*/
 
 int		main(void)
 {
@@ -46,6 +54,7 @@ int		main(void)
 		if (!play(&m, &p))
 		{
 			ft_putstr_fd("BREAK IN PLAY\n", fd);
+			ft_free_tab(&m.piece);
 			break ;
 		}
 		ft_putstr_fd("ROUND = ", fd);
