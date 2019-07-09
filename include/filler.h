@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:09:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/07/05 04:14:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/07/10 00:10:11 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		set_rest(t_info *m, t_play *p);
 
 //player_id
 int		set_player_id(t_info *m, int ret);
-int		get_player_id(t_info *m);;
+int		get_player_id(t_info *m);
 
 //map.c
 //allocate the map, check if lines are valid, fill the **map
